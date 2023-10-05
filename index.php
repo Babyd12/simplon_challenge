@@ -25,7 +25,15 @@
 
              <div class="field">
                 <input type="text" name="output" readonly>
-                <label> <?php echo $_SESSION['euro_value'] ?> </label>
+                <label> 
+                  <?php 
+        
+                  echo $_SESSION['euro_value'] ? $_SESSION['euro_value'] : $_SESSION['error'];
+              
+              ?>
+                
+               
+               </label>
              </div>
 
             <div class="content">
