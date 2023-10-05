@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
 <html lang="en" dir="ltr">
@@ -11,20 +12,20 @@
          <div class="title">
          Money Converter
          </div>
-         <form action="#">
+         <form action="exe_of_converter.php" method="get">
             <div class="field">
                <input type="text" required>
                <label>Set FCFA Value</label>
             </div>
 
             <div class="field">
-                <input type="submit" value="Convert">
+                <input type="submit" value="convert">
              </div>
 
-            <div class="field">
-               <input type="password" required>
-               <!-- <label>Password</label> -->
-            </div>
+             <div class="field">
+                <input type="text" name="output" required>
+                <label> <?php echo isset($_SESSION['euro_value']) ?> </label>
+             </div>
             <div class="content">
                <div class="pass-link">
                   <a href="#">Get source code on github </a>
