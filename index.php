@@ -12,22 +12,25 @@
          <div class="title">
          Money Converter
          </div>
-         <form action="exe_of_converter.php" method="get">
+         <form action="php_money_converter/exe_of_converter.php" method="get">
+            
             <div class="field">
-               <input type="text" required>
+               <input type="number" name= "amound" required>
                <label>Set FCFA Value</label>
             </div>
 
             <div class="field">
-                <input type="submit" value="convert">
+                <input type="submit" value="convert" name="action">
              </div>
 
              <div class="field">
-                <input type="text" name="output" required>
-                <label> <?php echo isset($_SESSION['euro_value']) ?> </label>
+                <input type="text" name="output" readonly>
+                <label> <?php echo $_SESSION['euro_value'] ?> </label>
              </div>
+
             <div class="content">
                <div class="pass-link">
+                  
                   <a href="#">Get source code on github </a>
                </div>
             </div>
