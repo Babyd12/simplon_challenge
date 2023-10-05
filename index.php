@@ -15,7 +15,7 @@
          <form action="php_money_converter/exe_of_converter.php" method="get">
             
             <div class="field">
-               <input type="number" name= "amound" required>
+               <input type="number" step="any"  name= "amound" required>
                <label>Set FCFA Value</label>
             </div>
 
@@ -27,8 +27,12 @@
                 <input type="text" name="output" readonly>
                 <label> 
                   <?php 
-        
-                  echo $_SESSION['euro_value'] ? $_SESSION['euro_value'] : $_SESSION['error'];
+                  if(isset($_SESSION['euro_value']) ){
+                     echo $_SESSION['euro_value'];
+                     
+                  }
+                  
+                 
               
               ?>
                 
@@ -37,8 +41,7 @@
              </div>
 
             <div class="content">
-               <div class="pass-link">
-                  
+               <div class="pass-link">           
                   <a href="#">Get source code on github </a>
                </div>
             </div>
