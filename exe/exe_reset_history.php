@@ -5,6 +5,8 @@ if(isset($_GET['reset_action']) && empty($_GET['amound']) && isset($_SESSION['hi
     
     session_unset();
     header("Location: " .$_SERVER['HTTP_REFERER'] );
+}else{
+    header("Location: " .$_SERVER['HTTP_REFERER'] );
 }
 
 ?>

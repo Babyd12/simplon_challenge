@@ -93,7 +93,6 @@ $_SESSION['constant_fcfa'] = 655.957;
 
                     <?php 
                         $date  =  date("Y/m/d");
-                        $output = $_SESSION['euro_value']/$_SESSION['constant_fcfa'];
 
                         if(empty( ($_SESSION['history']) ) ){
                            echo"Your history has been cleaned up";
@@ -104,7 +103,7 @@ $_SESSION['constant_fcfa'] = 655.957;
                              <tr class='active-row'>
                                 <td>Melissa</td>
                                 <td>".$value." </td>
-                                <td>".number_format($output,2)."</td>
+                                <td>".$_SESSION['euro_value']."</td>
                                 <td>".$date."</td>
                              </tr>
                              ";
