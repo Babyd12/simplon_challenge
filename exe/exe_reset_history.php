@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_GET['reset_action']) && empty($_GET['amound']) && isset($_SESSION['history'])){
+if(isset($_GET['reset_action']) && empty($_GET['amound']) && isset($_SESSION['date_history'])){
     
     session_unset();
     header("Location: " .$_SERVER['HTTP_REFERER'] );

@@ -53,7 +53,7 @@ include "test.php";
 
       <div class="wrapper">
          <div class="title">
-         History Reset 
+         History
          </div>
         
          <form action="exe/exe_reset_history.php" method="get">
@@ -63,20 +63,21 @@ include "test.php";
              </div>
     
          </form>
-
-         
       </div>
 
       <div style="overflow-y: scroll;">  
          <table class="styled-table">
                 <thead>
                     <tr>
-                        <th>From FCFA</th>
+                        <th>Conversion of history</th>
+                        <th> from FCFA amound</th>
                         <th> to Euro Amound</th>
-                        <th>History of conversion</th>
+                        <th>Date/Hour</th>
                     </tr>
                 </thead>
                      <?php 
+
+                                    
 
                         if( isDifferentDay() && isset($_SESSION['val']) ){
                            echo "<tbody>";
@@ -89,57 +90,47 @@ include "test.php";
                                        echo "<tr>";
                                        echo "<td colspan='4'>Your history has been cleaned up</td>";
                                        echo "</tr>";
-                                    } 
+                                    } else {
+                                       $viewAll[] = array_merge_recursive($_SESSION['val'], $_SESSION['date_history']);
+
+                                      print_r($viewAll); 
+                                       foreach ($viewAll as $entry) {
+                                          echo "<tr>";
+                                          echo "<td>" . $entry['date'] . "</td>";
+                                          echo "<td>" . $entry['montant'] . "</td>";
+                                          echo "<td>" . $_SESSION['output_value'] . "</td>";
+                                          echo "</tr>";
+                                       }
+                                      // echo($_SESSION['val']); 
+                                    }
 
                               echo "</tbody>";
                         }
                         else{
-                              echo "<tbody>";
+                           echo "<tbody>";
+                                    echo "<tr>";
+                                       echo "<td>Made by user</td>";
+                                       
+                                    echo "</tr>";
 
                                     if (empty($_SESSION['date_history'])) {
                                        echo "<tr>";
                                        echo "<td colspan='4'>Your history has been cleaned up</td>";
                                        echo "</tr>";
-                                    }
-                                    else {
-                                          $mergedData = [];
-                                          foreach ($_SESSION['date_history'] as $entry) {
-                                             $date = $entry['date'];
-                                             if (!isset($mergedData[$date])) {
-                                                $mergedData[$date] = [];
-                                             }
-                                       }
-                                       
-                                       foreach ($_SESSION['val'] as $entry) {
-                                             $date = $entry['date'];
-                                             $montant = $entry['montant'];
-                                             if (isset($mergedData[$date])) {
-                                                $mergedData[$date][] = $montant;
-                                             }
-                                       }
-                                       // Afficher les données fusionnées
-                                       if (!empty($mergedData)) {
-                                         
-                                             foreach ($mergedData as $date => $montants) {
-                                                echo "<tr>";
-                                                   echo "<th>" ."Day of conversion  : "  . $date . "</th>";
-                                                   foreach ($montants as $montant) {
-                                                      echo "<tr> <td>". $montant . "</td> 
-                                                                  <td>". $_SESSION['output_value'] . "</td>
-                                                                  
-                                                            </tr>";
+                                    } else {
+                                       $viewAll[] = array_merge_recursive($_SESSION['date_history'], $_SESSION['val']);
 
-                                                 
-                                                   }
-                                                  
-                                                echo "</tr>";
-                                             }
-                                         
+                                      print_r($viewAll); 
+                                       foreach ($viewAll as $key => $entry) {
+                                                     
+                                             echo "<tr>";
+                                             echo "<td>" . $entry['date'] . "</td>";
+                                             echo "<td>" . $entry['montant'] . "</td>";
+                                             echo "</tr>";
+                                          
+                                          
                                        }
-                                       else {
-                                          echo "Aucune donnée disponible.";
-                                       }
-                                  
+                                      // echo($_SESSION['val']); 
                                     }
 
                               echo "</tbody>";

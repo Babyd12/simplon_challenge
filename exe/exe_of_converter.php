@@ -6,16 +6,18 @@ $error = "Invalid amound";
 if(isset($_GET['action'])){
 
     $montantXOF = $_GET['amound'];
-   $_SESSION['history'][] = $montantXOF;
-   
 
-   $_SESSION['date_history'][] = displayCurrentTime();
-   //$_SESSION['frist_insert']++;
-
-    //print_r($_SESSION['date_history']); 
+   $_SESSION['date_history'][] = [
+        'date' => date('Y-m-d')
+        
+    ];
+   $_SESSION['val'][] = [
+        'date' => date('Y-m-d'),
+        'montant' => $_GET['amound']
+    ];
 
     if($montantXOF < 0){
-        echo $_SESSION['euro_value'] = $error;
+        echo $_SESSION['output_value'] = $error;
         header('location:' .$_SERVER['HTTP_REFERER']);
         die();
     }
@@ -24,7 +26,7 @@ if(isset($_GET['action'])){
     $montantEUR = $montantXOF / $tauxDeChange;
     //echo "Montant en euro : " . number_format($montantEUR, 2) . " EUR";
    
-   $_SESSION['euro_value'] = number_format($montantEUR, 2);
+   $_SESSION['output_value'] = number_format($montantEUR, 2);
    header('location:' .$_SERVER['HTTP_REFERER']);
 
 }
