@@ -1,0 +1,255 @@
+<?php session_start(); ?> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Test</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <div class="row"> 
+        <section class="section">
+          <header>
+            <h3>Covid Test</h3>
+            <h4>Be safe and sure</h4>
+          </header>
+          <main>
+            <form action="exe/exe_enreg.php" method="get">
+              <div class="form-item box-item">
+                <input type="text" name="name" placeholder="Name" data-required>
+                <p class = "errorReq" > <?php  if(empty($_SESSION['name'])) {echo "Empty Input"; }; ?> </p>
+                
+              </div>
+
+              <div class="form-item box-item">
+                <input type="text" name="fristname" placeholder="Frist Name" data-required>
+                <p class = "errorReq" > <?php  if(empty($_SESSION['fristname'])) {echo "Empty Input"; }; ?> </p>
+              </div>
+
+
+
+              <div class="form-item box-item">
+                <input type="number" name="weight" min="2" placeholder="Weight" data-required>
+                <p class = "errorReq" > <?php  if(empty($_SESSION['weight'])) {echo "Empty Input"; }; ?> </p>
+              </div>
+
+              <div class="form-item box-item">
+                <input type="number" name="temperature" placeholder="temperature" step="any" min="32" max="43"  data-required>
+                <p class = "errorReq" > <?php  if(empty($_SESSION['temperature'])) {echo "Empty Input"; }; ?> </p>
+              </div>
+
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+                  <div class="radio-label"> 
+                    <label class="label">Gender</label>
+                  </div>
+                  <div class="form-item"> 
+                    <input id="dio" type="radio" name="gender" value="h" require>
+                    <label for="dio">Homme</label> 
+                  </div>
+
+                  <div class="form-item"> 
+                    <input id="din" type="radio" name="gender" value="f" require>
+                    <label for="din">Femme</label>
+                  </div>
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+
+
+
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+                  <div class="radio-label"> 
+                    <label class="label">Age Range</label>
+                  </div>
+
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+
+                  <div class="form-item"> 
+                    <input id="child" type="radio" name="agerange" value="child" require>
+                    <label for="child">0 à 15 ans</label>
+                  </div>
+
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+
+                  <div class="form-item"> 
+                    <input id="teenager" type="radio" name="agerange" value="teenager" require>
+                    <label for="teenager">15 à 25 ans</label>
+                  </div>
+
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+
+                  <div class="form-item"> 
+                    <input id="adult" type="radio" name="agerange" value="adult" require>
+                    <label for="adult">26 à 65 ans</label>
+                  </div>
+
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+
+                  <div class="form-item"> 
+                    <input id="old" type="radio" name="agerange" value="old" require>
+                    <label for="old">65 à Plus ans</label>
+                  </div>
+
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+              
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+                  <div class="radio-label"> 
+                    <label class="label">Headache</label>
+                  </div>
+                  <div class="form-item"> 
+                    <input id="md" type="radio" name="headache" value="oui" require>
+                    <label for="md">oui</label>
+                  </div>
+
+                  <div class="form-item"> 
+                    <input id="mdn" type="radio" name="headache" value="non" require>
+                    <label for="mdn">non</label>
+                  </div>
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+                  <div class="radio-label"> 
+                    <label class="label">Cough</label>
+                  </div>
+                  <div class="form-item"> 
+                    <input id="to" type="radio" name="cough" value="oui" require>
+                    <label for="to">oui</label>
+                  </div>
+
+                  <div class="form-item"> 
+                    <input id="touxo" type="radio" name="cough" value="non" require>
+                    <label for="touxo">non</label>  
+                  </div>
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+              
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+                  <div class="radio-label"> 
+                    <label class="label">Diarrhea</label>
+                  </div>
+                  <div class="form-item"> 
+                    <input id="diarrheaO" type="radio" name="diarrhea" value="oui" require>
+                    <label for="diarrheaO">oui</label>
+                  </div>
+
+                  <div class="form-item"> 
+                    <input id="diarrheaN" type="radio" name="diarrhea" value="non" require>
+                    <label for="diarrheaN">non</label>
+                  </div>
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+
+              
+              <div class="form-item box-item">
+                <div class="form-item-triple">
+                  <div class="radio-label"> 
+                    <label class="label">Weight loss </label>
+                  </div>
+                  <div class="form-item"> 
+                    <input id="perte" type="radio" name="weightloss" value="oui" require>
+                    <label for="perte">oui</label>
+                  </div>
+
+                  <div class="form-item"> 
+                    <input id="ptn" type="radio" name="weightloss" value="non" require>
+                    <label for="ptn">non</label>
+                  </div>
+                </div>
+                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
+              </div>
+
+              <div class="form-item">
+                <input type="submit" value="Submit" class="submit" id="submit" name="action">
+               
+              </div>
+           
+            </form>
+            <p>Nom et Prenom : </p>
+            <p>Score: </p>
+            <div class="form-item">
+                <?php 
+                if($_SESSION['emptyInput']=="true"){
+                  echo "Replisser les champs vides";
+                }
+               
+                ?>
+               
+              </div>
+
+
+
+
+          </main>
+
+          <footer>
+            <p>Get source code on github  <a href="#">Click Here</a></p>
+          </footer>
+          <i class="wave"></i>
+        </section>
+        <!-- Section 2 -->
+      
+        <section class="section_show">
+          <header>
+
+          </header>
+          <main>
+            <p>lor</p>
+
+
+            <div class="form-item box-item">
+                  <input type="text" name="fristname" placeholder="Frist Name" data-required>
+                  <p class = "errorReq" > <?php  if(empty($_SESSION['fristname'])) {echo "Empty Input"; }; ?> </p>
+                </div>
+
+
+
+          </main>
+
+          <div>
+            <p>Get source code on github  <a href="#">Click Here</a></p>
+          </div>
+          <i class="wave"></i>
+        </section>
+       
+
+
+      </div>
+
+   
+
+    
+<!-- Section 2 -->
+
+
+</body>
+</html>
