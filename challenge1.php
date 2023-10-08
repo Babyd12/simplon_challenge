@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Covid Test</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style1.css">
    
 </head>
 <body>
@@ -217,7 +217,7 @@
                       <h4>Vous êtes dans la Zone Verte : Restez Cool </h4>
                     </header>
                     <main>
-                        <p> Name : ".$_SESSION['nom']." </p>
+                        <p> Name : ".$_SESSION['name']." </p>
                         <p> Average risk of being contaminated : ".$_SESSION['percentage']." %</p> <br>                    
                         <p> Vous présentez actuellement un faible risque d'infection. Continuez de suivre les mesures de sécurité recommandées, telles que le port du masque dans les lieux publics, le lavage fréquent des mains et la distanciation sociale. Restez vigilant et surveillez votre santé. </p>  
                     </main>
@@ -250,7 +250,7 @@
                   <h4> Attention ! Zone Rouge : Suivez les Directives </h4>
                 </header>
                 <main>
-                    <p> Name : ".$_SESSION['nom']." </p>
+                    <p> Name : ".$_SESSION['name']." </p>
                     <p> Average risk of being contaminated : ".$_SESSION['percentage']." %</p> <br>
                     <p>Votre résultat montre un risque élevé d'infection. Il est impératif de s'isoler immédiatement pour éviter la propagation du virus. Contactez immédiatement un professionnel de la santé pour des conseils et un dépistage supplémentaires. Suivez les recommandations des autorités sanitaires locales </p>  
                 </main>
