@@ -1,14 +1,18 @@
 <?php
-session_start();
 
+include '../index.php';
 $error = "Invalid amound";
 
 if(isset($_GET['action'])){
 
     $montantXOF = $_GET['amound'];
    $_SESSION['history'][] = $montantXOF;
+   
 
-    print_r($_SESSION['history']); 
+   $_SESSION['date_history'][] = displayCurrentTime();
+   //$_SESSION['frist_insert']++;
+
+    //print_r($_SESSION['date_history']); 
 
     if($montantXOF < 0){
         echo $_SESSION['euro_value'] = $error;

@@ -1,5 +1,9 @@
 <?php session_start();
 $_SESSION['constant_fcfa'] = 655.957;
+$_SESSION['date_init'] = time();
+
+
+include "test.php";
 ?>
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
@@ -68,62 +72,41 @@ $_SESSION['constant_fcfa'] = 655.957;
                         <th>Conversion of history</th>
                         <th> from FCFA amound</th>
                         <th> to Euro Amound</th>
-                        <th>Date</th>
+                        <th>Date/Hour</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Made by user</td>
-                        <td>User name</td>
-                    </tr>
-                    <tr class="active-row">
-                        <td>Melissa</td>
-                        <td>2220</td>
-                        <td>2020</td>
-                        <td>01-10-2022</td>
-                    </tr>
-                    <tr class="active-row">
-                        <td>Melissa</td>
-                        <td>2220</td>
-                        <td>2020</td>
-                        <td>01-10-2022</td>
-                    </tr>
-                
-                   
+                     <?php 
+                        if(  isset($_SESSION['euro_value']) ){
+                           echo "<tbody>";
+                                    echo "<tr>";
+                                       echo "<td>Made by user</td>";
+                                       
+                                    echo "</tr>";
 
-                    <?php 
-                        $date  =  date("Y/m/d");
-
-                        if(empty( ($_SESSION['history']) ) ){
-                           echo"Your history has been cleaned up";
+                                    if (empty($_SESSION['history'])) {
+                                       echo "<tr>";
+                                       echo "<td colspan='4'>Your history has been cleaned up</td>";
+                                       echo "</tr>";
+                                    } else {
+                                       foreach ($_SESSION['history'] as $key => $value) {
+                                          echo "<tr class='active-row'>";
+                                             echo "<td>Melissa</td>";
+                                             echo "<td>".$value."</td>";
+                                             echo "<td>".$_SESSION['euro_value']."</td>";
+                                             echo "<td>".$_SESSION['date_history'][$key]."</td>";  
+                                             
+                                          echo "</tr>";
+                                       }
+                                       //print_r($_SESSION['date_history']); 
+                                    }
+                              echo "</tbody>";
                         }
-                        else{
-                           foreach ($_SESSION['history'] as $value){
-                              echo "
-                             <tr class='active-row'>
-                                <td>Melissa</td>
-                                <td>".$value." </td>
-                                <td>".$_SESSION['euro_value']."</td>
-                                <td>".$date."</td>
-                             </tr>
-                             ";
-                             /*echo "
-                             
-                                <td>Melissa</td>
-                                <td>".$value." </td>
-                          
-                             ";*/                          
-  
-                          }
-                        }
-
-
                      ?>
 
-                    <!-- and so on... -->
-                </tbody>
             </table>
             </div>
+
+
       
          
    </body>
