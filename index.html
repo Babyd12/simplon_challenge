@@ -1,255 +1,194 @@
-<?php session_start(); ?> 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Covid Test</title>
-    <link rel="stylesheet" href="style.css">
-   
-</head>
-<body>
-    <div class="row"> 
-        <section class="section">
-          <header>
-            <h3>Covid Test</h3>
-            <h4>Be safe and sure</h4>
-          </header>
-          <main>
-            <form action="exe/exe_enreg.php" method="get">
-              <div class="form-item box-item">
-                <input type="text" name="name" placeholder="Name" data-required>
-                <p class = "errorReq" > <?php  if(empty($_SESSION['name'])) {echo "Empty Input"; }; ?> </p>
+<?php
+include '../function.php';
+session_start();
+
+if (isset($_GET['action'])) {
+    //echo "J'ai reçu le formulaire ";
+  
+        $getAllInput = ['name','fristname','agerange','weight','temperature','gender','cough','diarrhea','weightloss','headache' ];
+
+        $radioFields = [ 'headache', 'cough', 'diarrhea', 'weightloss'];
+        $_SESSION['errors'] = false;
+        
+        //catch empty input 
+        
+     /*   foreach($getAllInput as $empty){  
+            $empty = filter_var($_GET[$empty], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+            if(empty($_GET[$empty]) ){   
+                      
+                $_SESSION['errors'] = true;
+                //echo "des vides 1"; die();
+                header('Location: ' .$_SERVER['HTTP_REFERER']);
+            }else{
+                $_SESSION[$empty] = $_GET[$empty]; 
+            }
+
+            if( isSafeInputs($_GET[$empty])){
+                //echo $_GET[$empty];
+                //echo "caractère innatendu"; die();
+                header('Location: ' .$_SERVER['HTTP_REFERER']);
+            }      
+
+            if(empty(trim( ($_GET[$empty]) ) )){
+                $_SESSION["space"] = "space";
+                $_SESSION['errors'] = false;     
+                //unset($_SESSION[$empty]);
+                echo "have space or je fous quoi lq";
+                die();
+                header('Location: ' .$_SERVER['HTTP_REFERER']);
+
                 
-              </div>
+            }
+          
 
-              <div class="form-item box-item">
-                <input type="text" name="fristname" placeholder="Frist Name" data-required>
-                <p class = "errorReq" > <?php  if(empty($_SESSION['fristname'])) {echo "Empty Input"; }; ?> </p>
-              </div>
+        }
+        
 
+        if( strlen($_GET['name'] ==1 || strlen($_GET['name'] >=15 ) )){
+            $_SESSION['errors'] = true;
+            $_SESSION['sizeNameError'] = true;
+            echo "The longer of you name is too long";
+        }elseif( strlen($_GET['fristname'] ==1 || strlen($_GET['fristname'] >=15 ) )){
+            $_SESSION['errors'] = true;
+            $_SESSION['sizeNameError'] = true;
+        }
 
-
-              <div class="form-item box-item">
-                <input type="number" name="weight" min="2" placeholder="Weight" data-required>
-                <p class = "errorReq" > <?php  if(empty($_SESSION['weight'])) {echo "Empty Input"; }; ?> </p>
-              </div>
-
-              <div class="form-item box-item">
-                <input type="number" name="temperature" placeholder="temperature" step="any" min="32" max="43"  data-required>
-                <p class = "errorReq" > <?php  if(empty($_SESSION['temperature'])) {echo "Empty Input"; }; ?> </p>
-              </div>
-
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-                  <div class="radio-label"> 
-                    <label class="label">Gender</label>
-                  </div>
-                  <div class="form-item"> 
-                    <input id="dio" type="radio" name="gender" value="h" require>
-                    <label for="dio">Homme</label> 
-                  </div>
-
-                  <div class="form-item"> 
-                    <input id="din" type="radio" name="gender" value="f" require>
-                    <label for="din">Femme</label>
-                  </div>
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-
-
-
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-                  <div class="radio-label"> 
-                    <label class="label">Age Range</label>
-                  </div>
-
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-
-                  <div class="form-item"> 
-                    <input id="child" type="radio" name="agerange" value="child" require>
-                    <label for="child">0 à 15 ans</label>
-                  </div>
-
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-
-                  <div class="form-item"> 
-                    <input id="teenager" type="radio" name="agerange" value="teenager" require>
-                    <label for="teenager">15 à 25 ans</label>
-                  </div>
-
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-
-                  <div class="form-item"> 
-                    <input id="adult" type="radio" name="agerange" value="adult" require>
-                    <label for="adult">26 à 65 ans</label>
-                  </div>
-
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-
-                  <div class="form-item"> 
-                    <input id="old" type="radio" name="agerange" value="old" require>
-                    <label for="old">65 à Plus ans</label>
-                  </div>
-
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-              
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-                  <div class="radio-label"> 
-                    <label class="label">Headache</label>
-                  </div>
-                  <div class="form-item"> 
-                    <input id="md" type="radio" name="headache" value="oui" require>
-                    <label for="md">oui</label>
-                  </div>
-
-                  <div class="form-item"> 
-                    <input id="mdn" type="radio" name="headache" value="non" require>
-                    <label for="mdn">non</label>
-                  </div>
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-                  <div class="radio-label"> 
-                    <label class="label">Cough</label>
-                  </div>
-                  <div class="form-item"> 
-                    <input id="to" type="radio" name="cough" value="oui" require>
-                    <label for="to">oui</label>
-                  </div>
-
-                  <div class="form-item"> 
-                    <input id="touxo" type="radio" name="cough" value="non" require>
-                    <label for="touxo">non</label>  
-                  </div>
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-              
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-                  <div class="radio-label"> 
-                    <label class="label">Diarrhea</label>
-                  </div>
-                  <div class="form-item"> 
-                    <input id="diarrheaO" type="radio" name="diarrhea" value="oui" require>
-                    <label for="diarrheaO">oui</label>
-                  </div>
-
-                  <div class="form-item"> 
-                    <input id="diarrheaN" type="radio" name="diarrhea" value="non" require>
-                    <label for="diarrheaN">non</label>
-                  </div>
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-
-              
-              <div class="form-item box-item">
-                <div class="form-item-triple">
-                  <div class="radio-label"> 
-                    <label class="label">Weight loss </label>
-                  </div>
-                  <div class="form-item"> 
-                    <input id="perte" type="radio" name="weightloss" value="oui" require>
-                    <label for="perte">oui</label>
-                  </div>
-
-                  <div class="form-item"> 
-                    <input id="ptn" type="radio" name="weightloss" value="non" require>
-                    <label for="ptn">non</label>
-                  </div>
-                </div>
-                <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
-              </div>
-
-              <div class="form-item">
-                <input type="submit" value="Submit" class="submit" id="submit" name="action">
-               
-              </div>
-           
-            </form>
-            <p>Nom et Prenom : </p>
-            <p>Score: </p>
-            <div class="form-item">
-                <?php 
-                if($_SESSION['emptyInput']=="true"){
-                  echo "Replisser les champs vides";
-                }
-               
-                ?>
-               
-              </div>
+        //CHECK name
 
 
 
 
-          </main>
+     /*   foreach($radioFields as $empty){
+            unset($_SESSION[$empty]);
+            if(empty($_GET[$empty]) ){              
+                $_SESSION['emptyInput']= $_GET[$empty];
+                $_SESSION['errors'] = true;
+                echo "des radio vides 1"; die();
+                header('Location: ' .$_SERVER['HTTP_REFERER']);
+            }else{
+                $_SESSION[$empty] = $_GET[$empty]; 
+            }
+        }*/
 
-          <footer>
-            <p>Get source code on github  <a href="#">Click Here</a></p>
-          </footer>
-          <i class="wave"></i>
-        </section>
-        <!-- Section 2 -->
-      
-        <section class="section_show">
-          <header>
+        //catch space in all input 
+       /* foreach($getAllInput as $empty){
+            unset($_SESSION['space']);
+            if(empty(trim( ($_GET[$empty]) ) )){
+                $_SESSION["space"] = "space";
+                $_SESSION['errors'] = true;     
+                //unset($_SESSION[$empty]);
+                echo "have space or je fous quoi lq";
+                die();
+                header('Location: ' .$_SERVER['HTTP_REFERER']);
 
-          </header>
-          <main>
-            <p>lor</p>
+                
+            }
+        }*/
+        
+        
+        //unset($_SESSION['isEmpty']);
+        if($_SESSION['errors'] == true){
+            echo "ya des erreurs";
+            
+            echo " "; die();
+            header('Location: ' .$_SERVER['HTTP_REFERER']);
+            
+        }
+        else {  
+            //le form nest pas vide 
+            //echo "ya pas derreur"; die();
+            //test perso   
+            
+            if(!is_numeric($_GET['weight']) && !is_numeric($_GET['temperature'])  ){
+                $_SESSION['error'] = true;
+                echo "dd ".is_numeric($_GET['temperature']);
+                die();
+                header('Location: ' .$_SERVER['HTTP_REFERER']);
+            }else{
+                echo "im in is numeric die"; 
+          
+            }
+
+            if( $_GET['weight'] >=0 || $_GET['weight'] <=250 ){
+                $_SESSION['error'] = true;
+                $_SESSION['error_weight'] = true;
+                header('Location: ' .$_SERVER['HTTP_REFERER']);
+            }
+
+            if ($_GET['temperature'] < 32 || $_GET['temperature'] > 43) {
+                $_SESSION['error'] = true;
+                $_SESSION['error_temperature'] = true;
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+            }
+
+            if ( ($_GET['weight'] >= 0 && $_GET['weight'] <= 150) && ($_GET['temperature'] >= 32 && $_GET['temperature'] <= 43)){
+                $_SESSION['percentage'] = 0;
+            }
+            
 
 
-            <div class="form-item box-item">
-                  <input type="text" name="fristname" placeholder="Frist Name" data-required>
-                  <p class = "errorReq" > <?php  if(empty($_SESSION['fristname'])) {echo "Empty Input"; }; ?> </p>
-                </div>
-
-
-
-          </main>
-
-          <div>
-            <p>Get source code on github  <a href="#">Click Here</a></p>
-          </div>
-          <i class="wave"></i>
-        </section>
-       
-
-
-      </div>
-
-   
+            //affectation
+            foreach($getAllInput as $giviIt){
+                $_SESSION[$giviIt] = $_GET[$giviIt];
+            }
+/*
+            $_SESSION['name'] = $_GET['name'];
+            $_SESSION['fristname'] = $_GET['fristname'];
+            $_SESSION['weight'] = $_GET['weight'];
+            $_SESSION['temperature'] = $_GET['temperature'];
+            $_SESSION['gender'] = $_GET['gender'];
+            $_SESSION['agerange'] = $_GET['agerange'];
+            $_SESSION['headache'] = $_GET['headache'];
+            $_SESSION['cough'] = $_GET['cough'];
+            $_SESSION['diarrhea'] = $_GET['diarrhea'];
+            $_SESSION['weightloss'] = $_GET['weightloss'];
+*/
 
     
-<!-- Section 2 -->
+           
+            //controle personalisé
+  
+
+            foreach ($radioFields as $field) {
+                if (isset($_GET[$field]) === 'oui') {
+                    $_SESSION['percentage'] += 10;
+                } else {
+                    $_SESSION['percentage'] = 0;
+                }
+            }
+
+            if ($_GET['temperature'] >= 32 || $_GET['temperature'] <= 36) {
+                $_SESSION['percentage'] += 10;
+            }else {
+                $_SESSION['percentage'] += 30;
+            }
+
+            if ($_GET['weight'] > 50 ){
+                $_SESSION['percentage'] += 30;
+            }
+
+            if ($_GET['agerange'] == "child" ) {
+                $_SESSION['percentage'] += 10;
+            }
+            elseif ($_GET['agerange'] == "teenager"){
+                $_SESSION['percentage'] += 30;
+            }
+            elseif ($_GET['agerange'] == "adult"){
+                $_SESSION['percentage'] += 50;
+            }
+            elseif ($_GET['agerange'] == "old"){
+                $_SESSION['percentage'] += 60;
+            }
 
 
-</body>
-</html>
+            echo $_SESSION['percentage'];
+           
+            header('location: ' . $_SERVER['HTTP_REFERER']);
+        }
+
+        
+       // Vérification n2
+
+    }
+
+?>

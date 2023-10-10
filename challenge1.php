@@ -16,28 +16,38 @@
             <h4>Be safe and sure</h4>
           </header>
           <main>
-            <form action="exe/exe_enreg.php" method="get">
-              <div class="form-item box-item">
-                <input type="text" name="name" placeholder="Name" data-required>
-                <p class = "errorReq" > <?php  if(empty($_SESSION['name'])) {echo "Empty Input"; }; ?> </p>
-                
+            <?php
+                if (!empty($_SESSION['errorsArray'])) {
+                  foreach ($_SESSION['errorsArray'] as $errorMessage) {
+                      echo "<p  class='errorReq'>Error :" . $errorMessage . "</p>\n";
+                  }
+                  // Ne réinitialisez pas $_SESSION['errorsArray'] à false ici
+                } else {
+                  echo "Thanks for testing";
+                }
+          ?>
+
+            <form action="exe/exe_challenge1.php" method="get">
+
+              <label for="name">Name</label>
+              <div class="form-item box-item">               
+                <input type="text" name="name" placeholder= "<?php echo ($_SESSION['name']); ?>" value="<?php echo ($_SESSION['name']); ?>"  >                         
               </div>
 
+              <label for="fristname">Frist Name</label>
               <div class="form-item box-item">
-                <input type="text" name="fristname" placeholder="Frist Name" data-required>
-                <p class = "errorReq" > <?php  if(empty($_SESSION['fristname'])) {echo "Empty Input"; }; ?> </p>
+                <input type="text" name="fristname"  value= <?php echo ($_SESSION['fristname']); ?> >         
               </div>
 
 
-
-              <div class="form-item box-item">
-                <input type="number" name="weight" min="2" placeholder="Weight" data-required>
-                <p class = "errorReq" > <?php  if(empty($_SESSION['weight'])) {echo "Empty Input"; }; ?> </p>
+              <label for="weight">Weight</label>
+              <div class="form-item box-item">         
+                <input type="text" name="weight" min="2"  value = <?php echo ($_SESSION['weight']); ?>  >
               </div>
 
+              <label for="temperature">Temperature</label>
               <div class="form-item box-item">
-                <input type="number" name="temperature" placeholder="temperature" step="any" min="32" max="43"  data-required>
-                <p class = "errorReq" > <?php  if(empty($_SESSION['temperature'])) {echo "Empty Input"; }; ?> </p>
+                <input type="text" name="temperature" placeholder= "<?php echo ($_SESSION['temperature']); ?>" value= "<?php echo ($_SESSION['temperature']); ?>"  > 
               </div>
 
               <div class="form-item box-item">
@@ -46,19 +56,17 @@
                     <label class="label">Gender</label>
                   </div>
                   <div class="form-item"> 
-                    <input id="dio" type="radio" name="gender" value="h" require>
+                    <input id="dio" type="radio" name="gender" value="h" <?php if($_SESSION['gender']=="h"){echo 'checked="checked"'; }; ?>   >
                     <label for="dio">Homme</label> 
                   </div>
 
                   <div class="form-item"> 
-                    <input id="din" type="radio" name="gender" value="f" require>
+                    <input id="din" type="radio" name="gender" value="f" <?php if($_SESSION['gender']=="f"){echo 'checked="checked"'; }; ?>   >
                     <label for="din">Femme</label>
                   </div>
                 </div>
                 <small class="errorOnce"><i class="fa fa-asterisk" aria-hidden="true"></i> choose at least one</small>
               </div>
-
-
 
               <div class="form-item box-item">
                 <div class="form-item-triple">
@@ -74,7 +82,7 @@
                 <div class="form-item-triple">
 
                   <div class="form-item"> 
-                    <input id="child" type="radio" name="agerange" value="child" require>
+                    <input id="child" type="radio" name="agerange" value="child" <?php if($_SESSION['agerange']=="child"){echo 'checked="checked"'; }; ?>    >
                     <label for="child">0 à 15 ans</label>
                   </div>
 
@@ -85,7 +93,7 @@
                 <div class="form-item-triple">
 
                   <div class="form-item"> 
-                    <input id="teenager" type="radio" name="agerange" value="teenager" require>
+                    <input id="teenager" type="radio" name="agerange" value="teenager" <?php if($_SESSION['agerange']=="teenager"){echo 'checked="checked"'; }; ?> >
                     <label for="teenager">15 à 25 ans</label>
                   </div>
 
@@ -96,7 +104,7 @@
                 <div class="form-item-triple">
 
                   <div class="form-item"> 
-                    <input id="adult" type="radio" name="agerange" value="adult" require>
+                    <input id="adult" type="radio" name="agerange" value="adult" <?php if($_SESSION['agerange']=="adult"){echo 'checked="checked"'; }; ?>>
                     <label for="adult">26 à 65 ans</label>
                   </div>
 
@@ -107,7 +115,7 @@
                 <div class="form-item-triple">
 
                   <div class="form-item"> 
-                    <input id="old" type="radio" name="agerange" value="old" require>
+                    <input id="old" type="radio" name="agerange" value="old" <?php if($_SESSION['agerange']=="old"){echo 'checked="checked"'; }; ?> >
                     <label for="old">65 à Plus ans</label>
                   </div>
 
@@ -121,12 +129,12 @@
                     <label class="label">Headache</label>
                   </div>
                   <div class="form-item"> 
-                    <input id="md" type="radio" name="headache" value="oui" require>
+                    <input id="md" type="radio" name="headache" value="oui" <?php if($_SESSION['headache']=="oui"){echo 'checked="checked"'; }; ?>  >
                     <label for="md">oui</label>
                   </div>
 
                   <div class="form-item"> 
-                    <input id="mdn" type="radio" name="headache" value="non" require>
+                    <input id="mdn" type="radio" name="headache" value="non" <?php if($_SESSION['headache']=="non"){echo 'checked="checked"'; }; ?> >
                     <label for="mdn">non</label>
                   </div>
                 </div>
@@ -139,12 +147,12 @@
                     <label class="label">Cough</label>
                   </div>
                   <div class="form-item"> 
-                    <input id="to" type="radio" name="cough" value="oui" require>
+                    <input id="to" type="radio" name="cough" value="oui"  <?php if($_SESSION['cough']=="oui"){echo 'checked="checked"'; }; ?> >
                     <label for="to">oui</label>
                   </div>
 
                   <div class="form-item"> 
-                    <input id="touxo" type="radio" name="cough" value="non" require>
+                    <input id="touxo" type="radio" name="cough" value="non" <?php if($_SESSION['cough']=="non"){echo 'checked="checked"'; }; ?> >
                     <label for="touxo">non</label>  
                   </div>
                 </div>
@@ -157,12 +165,12 @@
                     <label class="label">Diarrhea</label>
                   </div>
                   <div class="form-item"> 
-                    <input id="diarrheaO" type="radio" name="diarrhea" value="oui" require>
+                    <input id="diarrheaO" type="radio" name="diarrhea" value="oui"  <?php if($_SESSION['diarrhea']=="oui"){echo 'checked="checked"'; }; ?> >
                     <label for="diarrheaO">oui</label>
                   </div>
 
                   <div class="form-item"> 
-                    <input id="diarrheaN" type="radio" name="diarrhea" value="non" require>
+                    <input id="diarrheaN" type="radio" name="diarrhea" value="non" <?php if($_SESSION['diarrhea']=="non"){echo 'checked="checked"'; }; ?> >
                     <label for="diarrheaN">non</label>
                   </div>
                 </div>
@@ -176,12 +184,12 @@
                     <label class="label">Weight loss </label>
                   </div>
                   <div class="form-item"> 
-                    <input id="perte" type="radio" name="weightloss" value="oui" require>
+                    <input id="perte" type="radio" name="weightloss" value="oui" <?php if($_SESSION['weightloss']=="oui"){echo 'checked="checked"'; }; ?>  >
                     <label for="perte">oui</label>
                   </div>
 
                   <div class="form-item"> 
-                    <input id="ptn" type="radio" name="weightloss" value="non" require>
+                    <input id="ptn" type="radio" name="weightloss" value="non" <?php if($_SESSION['weightloss']=="non"){echo 'checked="checked"'; }; ?> >
                     <label for="ptn">non</label>
                   </div>
                 </div>
@@ -209,7 +217,7 @@
          
            if(isset( $_SESSION['percentage'] )){
             
-              if( $_SESSION['percentage'] >= 0 &&  $_SESSION['percentage'] <=30){
+              if( $_SESSION['percentage'] >= 0 &&  $_SESSION['percentage'] <=30 && $_SESSION['errors'] == false ){
                 echo "
                   <section class='section_show'>
                     <header>
@@ -218,6 +226,10 @@
                     </header>
                     <main>
                         <p> Name : ".$_SESSION['name']." </p>
+                        <p> Age : ".$_SESSION['agerange']." </p>
+                        <p> Temperature : ".$_SESSION['temperature']." </p>
+                        <p> Weight : ".$_SESSION['weight']." </p>
+                        
                         <p> Average risk of being contaminated : ".$_SESSION['percentage']." %</p> <br>                    
                         <p> Vous présentez actuellement un faible risque d'infection. Continuez de suivre les mesures de sécurité recommandées, telles que le port du masque dans les lieux publics, le lavage fréquent des mains et la distanciation sociale. Restez vigilant et surveillez votre santé. </p>  
                     </main>
@@ -226,7 +238,7 @@
 
                 ";
               }
-              else if( $_SESSION['percentage'] >= 31 &&  $_SESSION['percentage'] <=60){
+              else if( $_SESSION['percentage'] >= 31 &&  $_SESSION['percentage'] <=60  &&  $_SESSION['errors'] == false ){
                 echo "
                     <section class='section_show'>
                     <header>
@@ -234,15 +246,19 @@
                       <h4> Précaution Mode : Niveau Jaune ! </h4>
                     </header>
                     <main>
-                        <p> Name : ".$_SESSION['name']." </p>
-                        <p> Average risk of being contaminated : ".$_SESSION['percentage']." %</p> <br>
+                        <p> Name : ".$_SESSION['name']."  </p>
+                        <p> fristname : ".$_SESSION['fristname']."  </p>
+                        <p> Age Range : ".$_SESSION['agerange']."  </p>
+                        <p> Weight : ".$_SESSION['weight']."  </p>
+                        <p> Temperature : ".$_SESSION['temperature']."  </p>
+                        <p> <strong> Average risk of being contaminated </strong> : ".$_SESSION['percentage']." %</p> <br>
                         <p>Votre résultat indique un risque modéré. Il est important de limiter les contacts sociaux non essentiels et de surveiller de près votre santé. Si vous présentez des symptômes tels que fièvre, toux ou essoufflement, contactez immédiatement un professionnel de la santé.</p>  
                     </main>
                     <i class='wave'></i>
                   </section>
                 ";
               }
-              else if( $_SESSION['percentage'] >= 61 &&  $_SESSION['percentage'] <=100){
+              else if( $_SESSION['percentage'] >= 61 &&  $_SESSION['percentage'] <=100 && $_SESSION['errors'] == false ){
                 echo "
                 <section class='section_show'>
                 <header>

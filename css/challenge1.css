@@ -17,6 +17,12 @@ body {
     color: #fff;
 
 }
+.errorReq{
+    color: red;
+    background-color: white;
+    -moz-background-color: white; /* Ajoutez cette ligne */
+}
+
 .row{
     display: flex;
     align-items: center;
@@ -166,6 +172,8 @@ small{
     }
 }
 
+
+
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color: rgba(226, 227, 232, .75);
     font-size: 16px;
@@ -221,8 +229,4 @@ small{
   from{
     transform: rotate(360deg);
   }
-}
-.errorReq{
-    color: red;
-    
 }
