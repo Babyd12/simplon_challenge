@@ -5,6 +5,4 @@ function isSafeInputs($input) {
     $pattern = '/[\'"\/<>,.*]+/';   
     return preg_match($pattern, $input);
 }
-
-
 ?>

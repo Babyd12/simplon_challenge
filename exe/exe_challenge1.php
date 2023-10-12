@@ -1,7 +1,6 @@
 <?php
 include '../function.php';
 session_start();
-
 if (isset($_GET['action'])) {
     //echo "J'ai reçu le formulaire ";
   
