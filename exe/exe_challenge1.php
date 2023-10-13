@@ -43,7 +43,7 @@ if (isset($_GET['action'])) {
                 header('Location: ' .$_SERVER['HTTP_REFERER']);
 
             }else{
-                $empty = filter_var($_GET[$empty], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+                //$empty = filter_var($_GET[$empty], FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
                 $_SESSION[$empty] = $_GET[$empty]; 
             }
 
