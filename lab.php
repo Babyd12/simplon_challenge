@@ -34,7 +34,7 @@
                 ],
             ] ;
     
-            $_SESSION['projets'] = $projets;
+            //$_SESSION['projets'] = $projets;
     
     
     ?>
