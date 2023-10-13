@@ -1,7 +1,7 @@
 <?php
 include '../function.php';
 session_start();
-
+/*After rebase */
 if (isset($_GET['action'])) {
         $getAllInput = ['name','fristname','agerange','weight','temperature','gender','cough','diarrhea','weightloss','headache' ];
 
