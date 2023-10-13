@@ -1,10 +1,8 @@
 <?php
 include '../function.php';
 session_start();
-
+/*After rebase */
 if (isset($_GET['action'])) {
-    //echo "J'ai reçu le formulaire ";
-  
         $getAllInput = ['name','fristname','agerange','weight','temperature','gender','cough','diarrhea','weightloss','headache' ];
 
         $radioFields = [ 'headache', 'cough', 'diarrhea', 'weightloss'];

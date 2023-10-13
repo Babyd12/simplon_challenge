@@ -31,23 +31,23 @@
 
               <label for="name">Name</label>
               <div class="form-item box-item">               
-                <input type="text" name="name" placeholder= "<?php echo ($_SESSION['name']); ?>" value="<?php echo ($_SESSION['name']); ?>"  >                         
+                <input type="text" name="name"  value="<?php if(!empty($_SESSION['name'])) {echo ($_SESSION['name']);  } ?>"  >                         
               </div>
 
               <label for="fristname">Frist Name</label>
               <div class="form-item box-item">
-                <input type="text" name="fristname"  value= <?php echo ($_SESSION['fristname']); ?> >         
+                <input type="text" name="fristname"  value= "<?php if(!empty($_SESSION['fristname'])) {echo ($_SESSION['fristname']);  } ?>" >         
               </div>
 
 
               <label for="weight">Weight</label>
               <div class="form-item box-item">         
-                <input type="text" name="weight" min="2"  value = <?php echo ($_SESSION['weight']); ?>  >
+                <input type="text" name="weight" min="2"  value = "<?php if(!empty($_SESSION['weight'])) {echo ($_SESSION['weight']);  } ?>">
               </div>
 
               <label for="temperature">Temperature</label>
               <div class="form-item box-item">
-                <input type="text" name="temperature" placeholder= "<?php echo ($_SESSION['temperature']); ?>" value= "<?php echo ($_SESSION['temperature']); ?>"  > 
+                <input type="text" name="temperature"  value= "<?php if(!empty($_SESSION['temperature'])) {echo ($_SESSION['temperature']);  } ?>"  > 
               </div>
 
               <div class="form-item box-item">
@@ -56,12 +56,12 @@
                     <label class="label">Gender</label>
                   </div>
                   <div class="form-item"> 
-                    <input id="dio" type="radio" name="gender" value="h" <?php if($_SESSION['gender']=="h"){echo 'checked="checked"'; }; ?>   >
+                    <input id="dio" type="radio" name="gender" value="h" <?php if(!empty($_SESSION['gender']) && $_SESSION['gender']=="h"  ){echo 'checked="checked"'; }; ?>   >
                     <label for="dio">Homme</label> 
                   </div>
 
                   <div class="form-item"> 
-                    <input id="din" type="radio" name="gender" value="f" <?php if($_SESSION['gender']=="f"){echo 'checked="checked"'; }; ?>   >
+                    <input id="din" type="radio" name="gender" value="f" <?php if(!empty($_SESSION['gender']) && $_SESSION['gender']=="f" ){echo 'checked="checked"'; }; ?>   >
                     <label for="din">Femme</label>
                   </div>
                 </div>
@@ -82,7 +82,7 @@
                 <div class="form-item-triple">
 
                   <div class="form-item"> 
-                    <input id="child" type="radio" name="agerange" value="child" <?php if($_SESSION['agerange']=="child"){echo 'checked="checked"'; }; ?>    >
+                    <input id="child" type="radio" name="agerange" value="child" <?php if(!empty($_SESSION['agerange']) && $_SESSION['agerange']=="child" ){echo 'checked="checked"'; }; ?>    >
                     <label for="child">0 à 15 ans</label>
                   </div>
 
@@ -93,7 +93,7 @@
                 <div class="form-item-triple">
 
                   <div class="form-item"> 
-                    <input id="teenager" type="radio" name="agerange" value="teenager" <?php if($_SESSION['agerange']=="teenager"){echo 'checked="checked"'; }; ?> >
+                    <input id="teenager" type="radio" name="agerange" value="teenager" <?php if(!empty($_SESSION['gender']) && $_SESSION['gender']=="f" ){echo 'checked="checked"'; }; ?> >
                     <label for="teenager">15 à 25 ans</label>
                   </div>
 
@@ -104,7 +104,7 @@
                 <div class="form-item-triple">
 
                   <div class="form-item"> 
-                    <input id="adult" type="radio" name="agerange" value="adult" <?php if($_SESSION['agerange']=="adult"){echo 'checked="checked"'; }; ?>>
+                    <input id="adult" type="radio" name="agerange" value="adult" <?php if(!empty($_SESSION['agerange']) && $_SESSION['agerange']=="adult" ){echo 'checked="checked"'; }; ?>>
                     <label for="adult">26 à 65 ans</label>
                   </div>
 
@@ -115,7 +115,7 @@
                 <div class="form-item-triple">
 
                   <div class="form-item"> 
-                    <input id="old" type="radio" name="agerange" value="old" <?php if($_SESSION['agerange']=="old"){echo 'checked="checked"'; }; ?> >
+                    <input id="old" type="radio" name="agerange" value="old" <?php if(!empty($_SESSION['agerange']) && $_SESSION['agerange']=="old" ){echo 'checked="checked"'; }; ?> >
                     <label for="old">65 à Plus ans</label>
                   </div>
 
@@ -129,12 +129,12 @@
                     <label class="label">Headache</label>
                   </div>
                   <div class="form-item"> 
-                    <input id="md" type="radio" name="headache" value="oui" <?php if($_SESSION['headache']=="oui"){echo 'checked="checked"'; }; ?>  >
+                    <input id="md" type="radio" name="headache" value="oui" <?php if(!empty($_SESSION['headache']) && $_SESSION['headache']=="oui" ){echo 'checked="checked"'; }; ?>  >
                     <label for="md">oui</label>
                   </div>
 
                   <div class="form-item"> 
-                    <input id="mdn" type="radio" name="headache" value="non" <?php if($_SESSION['headache']=="non"){echo 'checked="checked"'; }; ?> >
+                    <input id="mdn" type="radio" name="headache" value="non" <?php if(!empty($_SESSION['headache']) && $_SESSION['headache']=="non" ){echo 'checked="checked"'; }; ?> >
                     <label for="mdn">non</label>
                   </div>
                 </div>
@@ -147,12 +147,12 @@
                     <label class="label">Cough</label>
                   </div>
                   <div class="form-item"> 
-                    <input id="to" type="radio" name="cough" value="oui"  <?php if($_SESSION['cough']=="oui"){echo 'checked="checked"'; }; ?> >
+                    <input id="to" type="radio" name="cough" value="oui"  <?php if(!empty($_SESSION['cough']) && $_SESSION['cough']=="oui" ){echo 'checked="checked"'; }; ?> >
                     <label for="to">oui</label>
                   </div>
 
                   <div class="form-item"> 
-                    <input id="touxo" type="radio" name="cough" value="non" <?php if($_SESSION['cough']=="non"){echo 'checked="checked"'; }; ?> >
+                    <input id="touxo" type="radio" name="cough" value="non" <?php if(!empty($_SESSION['cough']) && $_SESSION['cough']=="non" ){echo 'checked="checked"'; }; ?> >
                     <label for="touxo">non</label>  
                   </div>
                 </div>
@@ -165,12 +165,12 @@
                     <label class="label">Diarrhea</label>
                   </div>
                   <div class="form-item"> 
-                    <input id="diarrheaO" type="radio" name="diarrhea" value="oui"  <?php if($_SESSION['diarrhea']=="oui"){echo 'checked="checked"'; }; ?> >
+                    <input id="diarrheaO" type="radio" name="diarrhea" value="oui"  <?php if(!empty($_SESSION['diarrhea']) && $_SESSION['diarrhea']=="oui" ){echo 'checked="checked"'; }; ?> >
                     <label for="diarrheaO">oui</label>
                   </div>
 
                   <div class="form-item"> 
-                    <input id="diarrheaN" type="radio" name="diarrhea" value="non" <?php if($_SESSION['diarrhea']=="non"){echo 'checked="checked"'; }; ?> >
+                    <input id="diarrheaN" type="radio" name="diarrhea" value="non" <?php if(!empty($_SESSION['diarrhea']) && $_SESSION['diarrhea']=="non" ){echo 'checked="checked"'; }; ?> >
                     <label for="diarrheaN">non</label>
                   </div>
                 </div>
@@ -184,12 +184,12 @@
                     <label class="label">Weight loss </label>
                   </div>
                   <div class="form-item"> 
-                    <input id="perte" type="radio" name="weightloss" value="oui" <?php if($_SESSION['weightloss']=="oui"){echo 'checked="checked"'; }; ?>  >
+                    <input id="perte" type="radio" name="weightloss" value="oui" <?php if(!empty($_SESSION['weightloss']) && $_SESSION['weightloss']=="oui" ){echo 'checked="checked"'; }; ?>  >
                     <label for="perte">oui</label>
                   </div>
 
                   <div class="form-item"> 
-                    <input id="ptn" type="radio" name="weightloss" value="non" <?php if($_SESSION['weightloss']=="non"){echo 'checked="checked"'; }; ?> >
+                    <input id="ptn" type="radio" name="weightloss" value="non" <?php if(!empty($_SESSION['weightloss']) && $_SESSION['weightloss']=="non" ){echo 'checked="checked"'; }; ?> >
                     <label for="ptn">non</label>
                   </div>
                 </div>
@@ -215,7 +215,7 @@
 
         <?php 
          
-           if(isset( $_SESSION['percentage'] )){
+           
             
               if( $_SESSION['percentage'] >= 0 &&  $_SESSION['percentage'] <=30 && $_SESSION['errors'] == false ){
                 echo "
@@ -237,8 +237,7 @@
                   </section>
 
                 ";
-              }
-              else if( $_SESSION['percentage'] >= 31 &&  $_SESSION['percentage'] <=60  &&  $_SESSION['errors'] == false ){
+              } else if( $_SESSION['percentage'] >= 31 &&  $_SESSION['percentage'] <=60  &&  $_SESSION['errors'] == false ){
                 echo "
                     <section class='section_show'>
                     <header>
@@ -257,8 +256,7 @@
                     <i class='wave'></i>
                   </section>
                 ";
-              }
-              else if( $_SESSION['percentage'] >= 61 &&  $_SESSION['percentage'] <=100 && $_SESSION['errors'] == false ){
+              }else if( $_SESSION['percentage'] >= 61 &&  $_SESSION['percentage'] <=100 && $_SESSION['errors'] == false ){
                 echo "
                 <section class='section_show'>
                 <header>
@@ -274,7 +272,7 @@
               </section>
             ";
               }
-           }
+           
 
     
         ?>
