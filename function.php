@@ -20,16 +20,20 @@ function isDifferentDay() {
    
 
     if( date("Y-m-d ", $_SESSION['date_init']) == date("Y-m-d ", $_SESSION['date_of_day']) ){
-        echo "egal days";
+        //echo "egal days";
         return false;
     }
     else if( date("Y-m-d ", $_SESSION['date_init']) !== date("Y-m-d ", $_SESSION['date_of_day']) ) {
-        echo"different days";
+        //echo"different days";
 
         return true; 
     }
 }
 
+function convertFcfaToEuro($value){
+    $var = $value/$_SESSION['constant_fcfa'] ;
+    return number_format($var,2);
+}
 
 //isDifferentDay();
 

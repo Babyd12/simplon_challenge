@@ -1,9 +1,10 @@
 <?php session_start();
+/*MobSpyco 2002% */
 $_SESSION['constant_fcfa'] = 655.957;
 $_SESSION['date_init'] = time();
 
-
-include "test.php";
+//$Golbal_SESSION['global_merge_data']  = [];
+include "function.php";
 ?>
 <!DOCTYPE html>
 <!-- Created By CodingNepal -->
@@ -27,13 +28,14 @@ include "test.php";
 
             <div class="field">
                 <input type="submit" value="convert" name="action">
-             </div>
+            </div>
 
              <div class="field">
                 <input type="text" name="output" readonly>
                 <label> 
                   <?php 
                      if(isset($_SESSION['output_value']) ){
+                        
                         echo $_SESSION['output_value'];
                         
                      }         
@@ -60,8 +62,29 @@ include "test.php";
       
             <div class="field">
                 <input type="submit" name="reset_action" value="Reset History">
-             </div>
-    
+            </div>
+            
+            <div class="content">
+               <select name="reset_selected" id="cars">
+                  <?php
+                  //var_dump($_SESSION['global_merge_data'] );
+                  foreach ($_SESSION['global_merge_data'] as $date => $montants) {
+                        echo "<option value='" . $date . "'>" . $date . "</option>";
+                        foreach ($montants as $key => $montant) {
+                           //echo "<tr> <td>". $key . "</td> ";
+                           //echo "<option value='" . $date . "'>" . $montant . "</option>";
+                                       
+                                 "</tr>";                                 
+                        }
+                  }
+                  ?>
+               </select>
+
+            </div>   
+            <div class="field">
+                <input type="submit" name="reset_one" value="Reset Selected History">
+               </div>
+
          </form>
 
          
@@ -76,6 +99,7 @@ include "test.php";
                         <th>History of conversion</th>
                     </tr>
                 </thead>
+
                      <?php 
 
                         if( isDifferentDay() && isset($_SESSION['val']) ){
@@ -92,8 +116,8 @@ include "test.php";
                                     } 
 
                               echo "</tbody>";
-                        }
-                        else{
+                           }
+                           else{
                               echo "<tbody>";
 
                                     if (empty($_SESSION['date_history'])) {
@@ -102,43 +126,34 @@ include "test.php";
                                        echo "</tr>";
                                     }
                                     else {
-                                          $mergedData = [];
-                                          foreach ($_SESSION['date_history'] as $entry) {
-                                             $date = $entry['date'];
-                                             if (!isset($mergedData[$date])) {
-                                                $mergedData[$date] = [];
-                                             }
-                                       }
-                                       
-                                       foreach ($_SESSION['val'] as $entry) {
-                                             $date = $entry['date'];
-                                             $montant = $entry['montant'];
-                                             if (isset($mergedData[$date])) {
-                                                $mergedData[$date][] = $montant;
-                                             }
-                                       }
-                                       // Afficher les données fusionnées
-                                       if (!empty($mergedData)) {
                                          
-                                             foreach ($mergedData as $date => $montants) {
+
+                                       /*if(empty($_SESSION['global_merge_data'] )) {
+                                          $_SESSION['global_merge_data'] = $_SESSION['global_merge_data'] ;
+                                       }*/
+                                        
+                                       // Afficher les données fusionnées
+                                       if (!empty($_SESSION['global_merge_data'] )) {
+                                         
+                                             foreach ($_SESSION['global_merge_data']  as $date => $montants) {
                                                 echo "<tr>";
                                                    echo "<th>" ."Day of conversion  : "  . $date . "</th>";
-                                                   foreach ($montants as $montant) {
+                                                   foreach ($montants as $key => $montant) {
                                                       echo "<tr> <td>". $montant . "</td> 
-                                                                  <td>". $_SESSION['output_value'] . "</td>
+                                                                  <td>". convertFcfaToEuro($montant) . "</td>
                                                                   
-                                                            </tr>";
-
-                                                 
+                                                            </tr>";                                 
                                                    }
                                                   
                                                 echo "</tr>";
-                                             }
-                                         
+                                             }                                        
                                        }
                                        else {
                                           echo "Aucune donnée disponible.";
                                        }
+                                      
+                                       //var_dump( $_SESSION['global_merge_data']);
+                                       
                                   
                                     }
 
