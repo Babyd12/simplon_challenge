@@ -7,10 +7,10 @@
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <link rel="stylesheet" href="css/project.css"/>
     <meta charset="utf-8">
    <title>Project Management</title> 
-    <link rel="stylesheet" href="css/project.css">
+ 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
@@ -50,6 +50,16 @@
         </div>
         <div class="right-side">
           <div class="topic-text">Enregistrer Une activité à un projet</div>
+          <?php if(isset(  $_SESSION['sucess_msg']  )){
+            
+            echo ' <p style= "font-size: 30px;">'.$_SESSION['sucess_msg'].'</p>';
+            sleep(5);
+            unset($_SESSION['sucess_msg']);
+            header("refresh: 10"); 
+          }
+          ?>
+
+          <p style= "font-size: 20px;">Selectionner un projet:</p>
           <?php  
               if(!empty($_SESSION['errorsArray'])){
                 foreach($_SESSION['errorsArray'] as $error_msg){
@@ -59,41 +69,46 @@
               }
             ?>
 
-        <form action="exe/exe_add_project.php">
+      <form action="exe/exe_add_activite.php" method="get">
           <div class="input-box">
-            <select>
-              <option selected value="0">Pure CSS Select</option>
-              <option value="1">No Wrapper</option>
-              <option value="2">No JS</option>
-              <option value="3">Nice!</option>
-            </select>
-          </div>
-
-          <div class="input-box">
-            <label for="label">Nom de l'activité</label>
-            <input type="text"  name="activité">
-          </div>
-          <div class="input-box">
-            <label for="label">Description de l'activité</label>
-            <input type="text"  name="description">
-          </div>
-          <div class="input-box">
-            <label for="label">Date à la quelle se déroulera l'activité  </label>
-            <input type="date"  name="date">
-          </div>
-
-          <div class="button">
-            <input type="submit" value="Enregistrer" name="add_pj">
-          </div>
+              
+              <select name="projet_key">
+                  <?php
+                  if (!empty($_SESSION['projets'])) {
+                      $projets = $_SESSION['projets'];
+                      foreach ($projets as $key => $projet) {
+                          echo '<option value="' . $key . '"> ' . $projet['nom_projet'] . '</option>';
+                      }
+                  } else {
+                      echo '<option value="">Aucun projet disponible</option>';
+                  }
+                  ?>
+              </select>
+            </div>
+            <div class="input-box">
+                <label for="activité">Nom de l'activité</label>
+                <input type="text" name="activité">
+            </div>
+            <div class="input-box">
+                <label for="description">Description de l'activité</label>
+                <input type="text" name="description">
+            </div>
+            <div class="input-box">
+                <label for="date">Date à laquelle se déroulera l'activité</label>
+                <input type="date" name="date">
+            </div>
+            <div class="button">
+                <input type="submit" value="Enregistrer" name="add_activite">
+            </div>
         </form>
-     
-      </div>
-    </div>
+
+          
+            </div>
+          </div>
 
     
 
-    <!--Form To add new field in array-->
-
+  
 
   </body>
 </html>
@@ -101,4 +116,3 @@
           
 
             
-?>

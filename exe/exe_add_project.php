@@ -28,6 +28,7 @@
             'description' => $_GET['description'],
             'statu' => 'inactif',
             'activitées' => [
+            //['activité' => 'Information', 'description' => ' Reunion D\'information pour les participants du projet ', 'date' =>'11/04/2022'],
                 [],
             ]
 

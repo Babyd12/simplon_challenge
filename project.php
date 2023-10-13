@@ -10,6 +10,7 @@
   </head>
   <body>
     <?php 
+    
           /*  $projets = [
                 [
                     'nom_projet' => 'ADEF NIPA',
@@ -86,6 +87,7 @@
     
           <tbody>
             <?php 
+          
             if(!empty($_SESSION['projets'])){
 
               $projets = $_SESSION['projets'];
@@ -93,7 +95,7 @@
               for($i =0; $i < count($projets) ; $i++){
                   $projet = $projets[$i];
                   $miniDescription = substr($projet['description'], 0, 60);
-                  echo'<tr>';
+                  echo'<tr>'; 
                       echo '<td>' . $count++ . '</td>';
                       echo '<td>' . $projet['nom_projet'] . '</td>';
                      // echo '<td>' . count($projet['activitées']) . '</td>';
