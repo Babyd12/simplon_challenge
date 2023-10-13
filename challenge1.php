@@ -12,7 +12,7 @@
         <section class="section">
           <header>
             <h3>Covid Test</h3>
-            <h4>Be safe and sure</h4>
+            <h4>Be Safe And Sure</h4>
           </header>
           <main>
             <?php
@@ -214,7 +214,7 @@
 
         <?php 
          
-           if(isset( $_SESSION['percentage'] )){
+           
             
               if( $_SESSION['percentage'] >= 0 &&  $_SESSION['percentage'] <=30 && $_SESSION['errors'] == false ){
                 echo "
@@ -236,8 +236,7 @@
                   </section>
 
                 ";
-              }
-              else if( $_SESSION['percentage'] >= 31 &&  $_SESSION['percentage'] <=60  &&  $_SESSION['errors'] == false ){
+              } else if( $_SESSION['percentage'] >= 31 &&  $_SESSION['percentage'] <=60  &&  $_SESSION['errors'] == false ){
                 echo "
                     <section class='section_show'>
                     <header>
@@ -256,8 +255,7 @@
                     <i class='wave'></i>
                   </section>
                 ";
-              }
-              else if( $_SESSION['percentage'] >= 61 &&  $_SESSION['percentage'] <=100 && $_SESSION['errors'] == false ){
+              }else if( $_SESSION['percentage'] >= 61 &&  $_SESSION['percentage'] <=100 && $_SESSION['errors'] == false ){
                 echo "
                 <section class='section_show'>
                 <header>
@@ -273,7 +271,7 @@
               </section>
             ";
               }
-           }
+           
 
     
         ?>
