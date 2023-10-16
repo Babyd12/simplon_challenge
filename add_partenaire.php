@@ -16,7 +16,7 @@
   </head>
   <body>
 
-  <?php include 'menu.php'; ?>
+    <?php include 'menu.php'; ?>
 
     <div class="container">
       <div class="content">
@@ -24,13 +24,13 @@
             
         </div>
         <div class="right-side">
-          <div class="topic-text">Enregistrer Une activité à un projet</div>
+          <div class="topic-text">Enregistrer Un partenair pour un projet</div>
           <?php if(isset(  $_SESSION['sucess_msg']  )){
             
             echo ' <p style= "font-size: 30px;">'.$_SESSION['sucess_msg'].'</p>';
-            sleep(5);
+            //sleep(5);
             unset($_SESSION['sucess_msg']);
-            header("refresh: 10"); 
+            //header("refresh: 10"); 
           }
           ?>
 
@@ -41,13 +41,11 @@
                   echo '<div class="topic-text" style = "color:black;font-size:20px;">' .$error_msg. '</div>';
                 
                 }
-                unset($_SESSION['errorsArray']);
-                
               }
             ?>
 
-      <form action="exe/exe_add_activite.php" method="get">
-            <div class="input-box">
+      <form action="exe/exe_add_partenaire.php" method="get">
+          <div class="input-box">
               
               <select name="projet_key">
                   <?php
@@ -56,6 +54,7 @@
                       foreach ($projets as $key => $projet) {
                           echo '<option value="' . $key . '"> ' . $projet['nom_projet'] . '</option>';
                       }
+                      unset($_SESSION['errorsArray']);
                   } else {
                       echo '<option value="">Aucun projet disponible</option>';
                   }
@@ -63,21 +62,21 @@
               </select>
             </div>
             <div class="input-box">
-                <label for="activité">Nom de l'activité</label>
-                <input type="text" name="activité">
+                <label for="activité">Nom du partenaier</label>
+                <input type="text" name="partenaire">
             </div>
             <div class="input-box">
-                <label for="description">Description de l'activité</label>
+                <label for="description">Description du partenaire</label>
                 <input type="text" name="description">
             </div>
             <div class="input-box">
-                <label for="date">Date à laquelle se déroulera l'activité</label>
+                <label for="date">Date de début du partenariat</label>
                 <input type="date" name="date">
             </div>
             <div class="button">
                 <input type="submit" value="Enregistrer" name="add_activite">
             </div>
-      </form>
+        </form>
 
           
             </div>

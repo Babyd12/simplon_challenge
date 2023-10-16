@@ -6,6 +6,11 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+.conteneur-de-table{
+  display: flex;
+  
+}
+
 .wrapper{
   height: 100%;
   width: 300px;
@@ -189,6 +194,7 @@ th{
   font-size: 20px;
 }
 
+
 td,th{
   padding: 12px;
   border: 1px solid #ccc;
@@ -309,7 +315,7 @@ td,th{
 
 }
 
-/*CSS Formulaire pour insérer dans le tableua*/
+/*CSS il s'agit du Formulaire pour insérer dans le tableua*/
 
 /* Google Font CDN Link */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');

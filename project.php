@@ -32,7 +32,8 @@
                             ['activité' => 'Entretriens', 'description' => ' Faire passer des entretients groupé et observer les participants', 'date' =>'23/04/2022'],          
                             ['activité' => 'Information', 'description' => ' Reunion D\'information pour les participants du projet ', 'date' =>'11/04/2022'],           
                             ['activité' => 'Entretriens', 'description' => ' Faire passer des entretients groupé et observer les participants', 'date' =>'23/04/2022']          
-                    ]
+                    ],
+                    partenaires =>   ['nom' => 'ODC', 'description' => ' Reunion D\'information pour les participants du projet ', 'date' =>'11/04/2022'], 
                 ],
             ] ;
 
@@ -42,32 +43,7 @@
     */
     
     ?>
-    <div class="wrapper">
-      <input type="checkbox" id="btn" hidden>
-      <label for="btn" class="menu-btn">
-        <i class="fas fa-bars"></i>
-        <i class="fas fa-times"></i>
-      </label>
-      <nav id="sidebar">
-        <div class="title">Side Menu</div>
-        <ul class="list-items">
-          <li><a href="#"><i class="fas fa-home"></i>Home</a></li>
-          <li><a href="add_project.php"><i class="fas fa-sliders-h"></i>Add Project</a></li>
-          <li><a href="add_activite.php"><i class="fas fa-address-book"></i>Add activity</a></li>
-          <li><a href="#"><i class="fas fa-cog"></i>Feature</a></li>
-          <li><a href="#"><i class="fas fa-stream"></i>Features</a></li>
-          <li><a href="#"><i class="fas fa-user"></i>About me</a></li>
-          <li><a href="#"><i class="fas fa-globe-asia"></i>Languages</a></li>
-         <!-- <li><a href="#"><i class="fas fa-envelope"></i>Contact us</a></li>-->
-          <div class="icons">
-           <!-- <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a> -->
-            <a href="#"><i class="fab fa-github"></i></a>
-          </div>
-        </ul>
-      </nav>
-    </div>
+    <?php include 'menu.php'; ?>
 
     <div class="content">
       <div class="header">Project Management</div>
@@ -88,13 +64,15 @@
           <tbody>
             <?php 
           
-            if(!empty($_SESSION['projets'])){
-
+          if(!empty($_SESSION['projets'])){
+            $keys = array_keys($_SESSION['projets']);
+            //print_r($keys);
               $projets = $_SESSION['projets'];
               $count = 1;
               for($i =0; $i < count($projets) ; $i++){
                   $projet = $projets[$i];
                   $miniDescription = substr($projet['description'], 0, 60);
+                  $key = $keys[$i];
                   echo'<tr>'; 
                       echo '<td>' . $count++ . '</td>';
                       echo '<td>' . $projet['nom_projet'] . '</td>';
@@ -102,17 +80,18 @@
                      echo '<td>' . (isset($projet['activitées']) ? count($projet['activitées']) : "vide") . '</td>';
                       echo '<td>' . $projet['statu'] . '</td>';
                       echo '<td>' . $projet['propriétaire'] . '</td>';
-                      echo '<td>' . $miniDescription . '<br><a href="#" class="btn">Voir Plus</a>' . '</td>' ;
-
-                  echo'</tr>';  
-                      
-                     /*
-                      for($j =0; $i < count($projet['activitées']) ; $j++){
-                          echo '- Activité : ' . $activité['activité'] . '<br>';
-                          echo '  Description : ' . $activité['description'] . '<br>';
-                          echo '  Date : ' . $activité['date'] . '<br>';            
-  
-                      }*/
+                     //echo ( '<td>' . $miniDescription.'</td><br>') ;
+                     echo '<td>
+                                "'.$miniDescription.'"<br>
+                                <form action="show_more.php">
+                                    <select name="show_more_selected" hidden>
+                                        <option value="'.$key.'"></option>
+                                        <input type="submit" name="show_more" value="Voir plus" class="btn"/>
+                                    </select>
+                                </form>
+                            </td>
+                    ';
+                  echo'</tr>';
                   
               }
             }
