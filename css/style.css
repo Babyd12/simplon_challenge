@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+*{
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+    background:no-repeat center/100% url("../image/bg.jpg");
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 720px;
+  height: 100vh;
+  list-style: none;
+  margin-top:-300px;
+}
+
+.menu li {
+  width: 125px;
+  height: 50px;
+  transition: background-position-x 0.9s linear;
+  text-align: center;
+
+  a {
+    font-size: 22px;
+    color: #4167B2;
+    text-decoration: none;
+    transition: all 0.45s;
+    font-weight: bold;
+   
+  }
+
+  &:hover {
+    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2ZXJzaW9uPSIxLjEi%0D%0AIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhs%0D%0AaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIKCSB3aWR0%0D%0AaD0iMzkwcHgiIGhlaWdodD0iNTBweCIgdmlld0JveD0iMCAwIDM5MCA1MCIgZW5hYmxlLWJhY2tn%0D%0Acm91bmQ9Im5ldyAwIDAgMzkwIDUwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHBhdGggZmlsbD0i%0D%0Abm9uZSIgc3Ryb2tlPSIjZDk0ZjVjIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLW1pdGVybGlt%0D%0AaXQ9IjEwIiBkPSJNMCw0Ny41ODVjMCwwLDk3LjUsMCwxMzAsMAoJYzEzLjc1LDAsMjguNzQtMzgu%0D%0ANzc4LDQ2LjE2OC0xOS40MTZDMTkyLjY2OSw0Ni41LDI0My42MDMsNDcuNTg1LDI2MCw0Ny41ODVj%0D%0AMzEuODIxLDAsMTMwLDAsMTMwLDAiLz4KPC9zdmc+Cg==");
+    animation: line 1s;
+  }
+
+  &:hover a {
+    color: #d94f5c;
+  }
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
+}
+
+@keyframes line {
+  0% {
+    background-position-x: 390px;
+  }
+}
+
+
+#contenair{
+    position: relative;
+    margin: auto; 
+    bottom: 220px;
+    display: flex;
+    flex-direction: column;
+    max-width: 530px;
+    height: 350px;
+    background-color: #F8F8F8;
+    align-items: center;
+}
+.contenaire_head{
+    display: flex;
+    flex-direction: column;
+    margin-left:118px; 
+}
+.contenaire_head h1 {
+    color:#0E192B;
+    text-align: left;
+    margin-left:0px; 
+;
+}
+.contenaire_head h4 {
+    color:#A9B3BC;
+}
+.login{
+    display: flex;
+    flex-direction:col;
+}
+.login .filling_form{
+    display: flex;
+    flex-direction: column;
+    margin-right:20px; 
+}
+.login .form input[type="email"]{
+    width: 280px;
+}
+.login .form input[type="password"]{
+    width: 280px;
+    margin-bottom: 15px;
+}
+.submit_btn .icons{
+    position: relative;  
+}
+
+.icons img{
+    width:16px;
+    position: relative;
+    left:280px;
+    bottom:34px;
+   
+}
+
+.fb_login_btn{
+    background-color: #4167B2;
+    width:55%;
+    height: 35px;
+    position: inherit;
+    text-align: center;
+    color:#fff;
+    padding:5px;
+    font-size: small;
+}
+.after_head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.traigh_ligne{
+    border-bottom: 1px solid gray;
+    width: 118px;
+    margin-right: 10px;
+    
+}
+.traigh_ligne1{
+    border-bottom: 1px solid gray;
+    width: 118px;
+    text-align: center;
+    margin-left: 10px;
+    
+}
+
+.after_head p{
+ position: relative;
+ top:9px;
+text-align: center;
+ 
+}
+.contenair_foot{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+.submit_btn{
+   position: absolute;
+   margin-right:-60px;
+   justify-content: flex-end;
+  
+}
+.submit_btn button{
+    background-color: #4167B2;
+    width:110px;
+    height: 35px;
+    position: inherit;
+
+}
+.submit_btn p{
+    color:#fff;
+    padding-top: 5px;
+    
+}
+
+.submit_btn .icons img{
+ position: inherit;
+  left:43px;
+  bottom: 20px;
+  width: 20px;
+
+    
+}
+
+
+.card_create_account{
+    position:absolute;
+    justify-content: flex-start;
+  
+}
+.card_create_account a{
+    text-decoration: none;
+    color:#7A808C;
+}
+
+/*Debut form connexion*/
+
+
+
+.filling_form{
+    display: flex;
+    justify-content: space-between;
+   
+
+}
+.filling_form label{
+  display: block;
+    margin: auto;
+    margin-left: 25px;
+    
+}
+
+.filling_form input[type="email"], input[type="password"], input[type="text"]{
+    width: 220px;
+    border-color: gray;
+    margin-left: 25px;
+  
+}
+.filling_form input[type="email"]:hover, input[type="password"]:hover{
+    border-color: #ADBBCB;
+}
+
+.info_form .filling_form .form .icons{
+    position: relative;
+}
+.info_form .filling_form .form .icons img{
+    position: inherit;
+    left:218px;
+    bottom: 20px;
+    width: 20px;
+
+}
+
+.info_form input[type="tel"]{
+    display: flex;
+    width: 90%;
+    border-color: #fff;
+    margin-right: -1px;
+   margin-top: 10px;
+}
+.info_form .phone{
+    display: flex;
+    width: 90%;
+   
+}
+.info_form  .form .icons_drapeau{
+    position: relative;
+      
+  }
+.info_form .form .icons_drapeau img{
+    position: inherit;
+    left:-10px;
+    top: -22px;
+    background-color: #7A808C;
+    width: 20px;
+    height: 20px;
+       
+   }
+   .info_form  .form P{
+   background-color: gray;
+   width: 69px;
+   margin-left:-18px;
+   margin-top:-23px;
+   text-align: right;
+  }
