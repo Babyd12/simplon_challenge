@@ -17,60 +17,27 @@
         </ul>
       </nav>
 
- 
-   
-        <div id="contenair">  
-            <div class="contenaire_head">
-            <h1>Connexion</h1>
-            <h4>Votre chauffeur en un clic !</h4>
-        </div>
-        <div class="fb_login_btn">Continuer avec Facebook</div>
-        
-        <div class="after_head">
-            <div class="traigh_ligne"></div>
-            <p>ou</p> 
-            <div class="traigh_ligne1"></div>
-        </div>
+    <?php 
+    session_start();
 
+    if(!isset($_SESSION['userActif'])   ){
+        header('location:login.php');
 
+    }else if(isset($_SESSION['userActif']) &&  $_SESSION['welcome'] ==   true){
+        if(isset($_SESSION['welcome']) && $_SESSION['welcome'] ==true){
+            echo '           <div class="msgError"> 
+            <p>Bienvenu</p>
+       </div>'; 
+       $_SESSION['welcome'] = false;
+       die();
+        }
+    }else{
+        echo 'rediriger vers le dashbord'; die();
+        header('location: index.php?');
+    }
+    ?>
 
-        <form action="singup" method="get" class="login">
-           
-            <div class="filling_form">
-                <div class="form">
-                    <label for="emal" class="labl">EMAIL</label>
-                    <input type="email" name="emamil" id="">
-                </div>
-    
-    
-                <div class="form">
-    
-                    <label for="password">MOT DE PASSE</label>
-                 
-                    <input type="password" name="psw" id="" >
-                    <div class="icons">
-                        <img src="image/icons/eye.png"/>
-                    </div>
-                   
-                </div>
-            </div>
-
-
-            
-        </form>
-        <div class="contenair_foot">
-            <div class="submit_btn"><button type="submit"> 
-                <p>S'inscrire  </p>
-                <div class="icons">
-                    <img src="image/icons/arrow1.png"/>
-                    
-                </div>
-
-            </button>
-        </div>
-            <div class="card_create_account"><p><a href="login.html">J'ai déjà un compte</a></p></div>
-        </div>
-
-    </div>
 </body>
+
+
 </html>

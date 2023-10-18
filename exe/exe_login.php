@@ -40,11 +40,11 @@
                 $nom = $line['nomUser'];
                 $_SESSION['userActif'] = $email;
                 $_SESSION['nomUserActif'] = $nom;
-                $_SESSION['wellcome'] = true;
+                $_SESSION['welcome'] = true;
 
                 //ne pas oublier de vider la session 
                 unset($_SESSION['email']);
-                header('location: ../pages');
+                header('location: ../index.php');
             }
 
         }

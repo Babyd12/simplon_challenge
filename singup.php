@@ -56,8 +56,19 @@
                     <div class="icons">
                         <img src="image/icons/eye.png"/>
                     </div>
+
+
+                    <label for="password">CONFIRMER LE MOT DE PASSE</label>
+                 
+                 <input type="password" name="pswd2"  >
+                 <div class="icons">
+                     <img src="image/icons/eye.png"/>
+                 </div>
                    
                 </div>
+
+
+
             </div>
 
 

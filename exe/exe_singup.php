@@ -22,6 +22,7 @@
         $prenom = $_GET['prenom'];
         $email = $_GET['email'];
         $password = md5($_GET['pswd']);
+        $password1 = md5($_GET['pswd2']);
         $tel = $_GET['tel'];
         $date = date('Y-m-d');
         $etat = 0;
@@ -49,6 +50,9 @@
             $error = true;
             $_SESSION['errorArray'][]= "Format de champ telephone invalide";
 
+        }else if($password != $password2){
+            $error = true;
+            $_SESSION['errorArray'][]= "Les mots de passe ne sont pas identique";
         }
 
         if($error) {
