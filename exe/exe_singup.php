@@ -62,11 +62,11 @@
         }else {
             //Je vérifie si lemail entré n'est nexiste pas déjà 
 
-            $req = "SELECT * FROM users WHERE emailUser = '".$email."' ";
+            $req = "SELECT * FROM users WHERE emailUser = '".$email."' OR phoneUser = '".$tel."' ";
             $exe = $bdd->query($req);
             $row = $exe->rowCount();
             if($row != 0){
-                $_SESSION['errorArray'][]= "Cet email est déjà utilisé.";
+                $_SESSION['errorArray'][]= "L'email  ou le numéro de téléphone est déjà utilisé.";
                 header("Location: ".$_SERVER["HTTP_REFERER"]);   
                 die();
     
