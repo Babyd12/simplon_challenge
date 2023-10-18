@@ -13,7 +13,7 @@
           <li><a href="#!">Home</a></li>
           <li><a href="#!">About</a></li>
           <li><a href="#!">Contact</a></li>
-          <li><a href="#!">Faq</a></li>
+          <li><a href="admin_bord/bord.php">Admin Board</a></li>
         </ul>
       </nav>
 
@@ -25,9 +25,9 @@
 
     }else if(isset($_SESSION['userActif']) &&  $_SESSION['welcome'] ==   true){
         if(isset($_SESSION['welcome']) && $_SESSION['welcome'] ==true){
-            echo '           <div class="msgError"> 
-            <p>Bienvenu</p>
-       </div>'; 
+            echo "          <div class='msgError> 
+            <p>Bienvenu </p>. 
+       </div>";
        $_SESSION['welcome'] = false;
        die();
         }

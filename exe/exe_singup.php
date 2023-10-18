@@ -50,7 +50,7 @@
             $error = true;
             $_SESSION['errorArray'][]= "Format de champ telephone invalide";
 
-        }else if($password != $password2){
+        }else if($password != $password1){
             $error = true;
             $_SESSION['errorArray'][]= "Les mots de passe ne sont pas identique";
         }
