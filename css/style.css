@@ -327,3 +327,6 @@ text-align: center;
   .msgError p{
     color:white;
   }
+  .msgError p::first-letter{
+    color: red;
+  }

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,48 +33,33 @@
             <div class="traigh_ligne1"></div>
         </div>
 
-
-
-        <form action="singup" method="get" class="login">
+        <form action="exe/exe_login.php" method="get" class="login">
            
             <div class="filling_form">
                 <div class="form">
                     <label for="emal" class="labl">EMAIL</label>
-                    <input type="email" name="emamil" id="">
+                    <input type="email" name="email" value="<?php echo (!empty($_SESSION['email']) ? $_SESSION['email'] : ''  ) ?> " >
                 </div>
-    
-    
+
                 <div class="form">
-    
                     <label for="password">MOT DE PASSE</label>
-                 
-                    <input type="password" name="psw" id="" >
+                    <input type="password" name="password" id="" >
                     <div class="icons">
                         <img src="image/icons/eye.png"/>
-                    </div>
-                   
+                    </div>               
                 </div>
             </div>
 
             <div class="contenair_foot">
-                
-                  
-                        <input type="submit" value="S'inscire" name="send" style=" width: 100%;" >
-                  
+                        <input type="submit" value="Se Connecter" name="sendlogin" style=" width: 100%;" >
                     <div class="icons">
-                        <img src="image/icons/arrow1.png"/>
-                        
+                        <img src="image/icons/arrow1.png"/>           
                     </div>
                </div>
-                  
-              
-            
-          
-
         </form>
         
 
-            <div class="card_create_account"><p><a href="login.php">J'ai déjà un compte</a></p></div>
+            <div class="card_create_account"><p><a href="singup.php">Créer un compte</a></p></div>
         </div>
         <div class="msgError">
             <?php   if(!empty($_SESSION['errorArray'])){
