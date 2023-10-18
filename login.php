@@ -21,9 +21,9 @@
    
         <div id="contenair">  
             <div class="contenaire_head">
-            <h1>Connexion</h1>
-            <h4>Votre chauffeur en un clic !</h4>
-        </div>
+                <h1>Connexion</h1>
+                <h4>Votre chauffeur en un clic !</h4>
+            </div>
         <div class="fb_login_btn">Continuer avec Facebook</div>
         
         <div class="after_head">
@@ -55,22 +55,36 @@
                 </div>
             </div>
 
-
+            <div class="contenair_foot">
+                
+                  
+                        <input type="submit" value="S'inscire" name="send" style=" width: 100%;" >
+                  
+                    <div class="icons">
+                        <img src="image/icons/arrow1.png"/>
+                        
+                    </div>
+               </div>
+                  
+              
             
+          
+
         </form>
-        <div class="contenair_foot">
-            <div class="submit_btn"><button type="submit"> 
-                <p>S'inscrire  </p>
-                <div class="icons">
-                    <img src="image/icons/arrow1.png"/>
-                    
-                </div>
+        
 
-            </button>
+            <div class="card_create_account"><p><a href="login.php">J'ai déjà un compte</a></p></div>
         </div>
-            <div class="card_create_account"><p><a href="singup.php">J'ai n'ai pas de un compte</a></p></div>
+        <div class="msgError">
+            <?php   if(!empty($_SESSION['errorArray'])){
+                        foreach($_SESSION['errorArray'] as $errorMsg){
+                            echo "<p> Erreur: $errorMsg </p>";
+                        }
+                        unset($_SESSION['errorArray']);
+                    }
+            ?>
+          
         </div>
-
     </div>
 </body>
 </html>

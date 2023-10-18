@@ -55,7 +55,7 @@ body{
   }
 }
 
-
+/*Login */
 #contenair{
     position: relative;
     margin: auto; 
@@ -63,7 +63,7 @@ body{
     display: flex;
     flex-direction: column;
     max-width: 530px;
-    height: 350px;
+    height: auto;
     background-color: #F8F8F8;
     align-items: center;
 }
@@ -72,18 +72,32 @@ body{
     flex-direction: column;
     margin-left:118px; 
 }
+.contenaire_head_sing_up{
+    display: flex;
+    flex-direction: column;
+    margin-left:45px;
+}
 .contenaire_head h1 {
-    color:#0E192B;
+    color:#4167B2;
     text-align: left;
     margin-left:0px; 
-;
+
 }
 .contenaire_head h4 {
     color:#A9B3BC;
 }
+.contenaire_head_sing_up h1 {
+    color:#4167B2;
+    text-align: left;
+    margin-left:0px; 
+
+}
+.contenaire_head_sing_up h4 {
+    color:#A9B3BC;
+}
 .login{
     display: flex;
-    flex-direction:col;
+    flex-direction:column;
 }
 .login .filling_form{
     display: flex;
@@ -149,44 +163,86 @@ text-align: center;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-between;
+    width: 150px;
 }
-.submit_btn{
-   position: absolute;
-   margin-right:-60px;
-   justify-content: flex-end;
-  
-}
-.submit_btn button{
+
+.info_form  input[type="submit"]{
     background-color: #4167B2;
-    width:110px;
-    height: 35px;
+    width: 100%;
+    min-width: 80px;
+    height: 32px;
+
+    position: inherit;
+    color:#fff;
+    padding-top: 0px;
+    margin-right: -105px;
+
+}
+
+
+
+.login  input[type="submit"]{
     position: inherit;
 
-}
-.submit_btn p{
-    color:#fff;
-    padding-top: 5px;
-    
+   margin-right:-65px;
+ 
+   min-width: 80px;
+   height: 32px;
+   background-color: #4167B2;
+
+    color: white;
 }
 
-.submit_btn .icons img{
- position: inherit;
-  left:43px;
-  bottom: 20px;
+
+
+.contenair_foot p{
+    color:#fff;
+    padding-top: 5px; 
+}
+
+.login .contenair_foot .icons img{
+
+ display: inline;
+  margin-left:-122px; 
+  bottom: -7px;
   width: 20px;
 
+  
     
 }
 
+.info_form .contenair_foot .icons img{
 
-.card_create_account{
-    position:absolute;
-    justify-content: flex-start;
+ display: inline-block;
+  margin-left:-92px; 
+  bottom: -7px;
+  width: 20px;
   
 }
+
+
+ .card_create_account{
+   
+    justify-content: flex-end;
+    margin-right:95px;
+    margin-bottom: 53px;
+    width: 181px;
+    height: auto;
+    position: relative;
+    bottom:29px;
+    right: 132px;
+  
+}
+
 .card_create_account a{
     text-decoration: none;
     color:#7A808C;
+    font-size:small;
+}
+.card_create_account:hover a{
+    text-decoration: none;
+    color:#4167B2;
+    font-size:small;
 }
 
 /*Debut form connexion*/
@@ -210,6 +266,7 @@ text-align: center;
     width: 220px;
     border-color: gray;
     margin-left: 25px;
+    background-color:#FFE;
   
 }
 .filling_form input[type="email"]:hover, input[type="password"]:hover{
@@ -247,15 +304,26 @@ text-align: center;
     position: inherit;
     left:-10px;
     top: -22px;
-    background-color: #7A808C;
     width: 20px;
     height: 20px;
        
    }
    .info_form  .form P{
-   background-color: gray;
+   background-color:#4167B2;
    width: 69px;
-   margin-left:-18px;
+   margin-left:-20px;
    margin-top:-23px;
    text-align: right;
+  }
+  .msgError{
+    min-width: none;
+    max-width: 380px;
+    height: auto;
+    background-color: #4167B2;
+    display: block;
+    position: relative;
+    bottom: 260px;
+  }
+  .msgError p{
+    color:white;
   }
