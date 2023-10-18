@@ -40,34 +40,44 @@
      </form>
 
       <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Projects</th>
-              <th>Activity</th>
-              <th>Status</th>
-              <th>Ownner</th>
-              <th>Description</th>
-              
-            </tr>
-          </thead>
-    
-          <tbody>
-          <tr>
-              <td>1</td>
-              <td>Nom du projet</td>
-              <td>3</td>
-              <td>Statut du projet</td>
-              <td>Propriétaire du projet</td>
-              <td>"Description courte" </td>
-          </tr>
-  
-            
-          </tbody>
-        </table>
-      </div>
-    </div>
+      <table>
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Téléphone</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        include '../config.php';
+        $req = "SELECT * FROM users ";
+        $exe = $bdd->query($req);
+        $row = $exe->rowCount();
+        if ($row != 0) {
+            $count = 1;
+            while ($line = $exe->fetch(PDO::FETCH_ASSOC)) {
+                extract($line);
+
+                $nom = $line['nomUser'];
+                $prenom = $line['prenomUser'];
+                $email = $line['emailUser'];
+                $tel = $line['phoneUser'];
+                echo '<tr>';
+                echo '<td>' . $count++ . '</td>';
+                echo '<td>' . $nom . '</td>';
+                echo '<td>' . $prenom . '</td>';
+                echo '<td>' . $email . '</td>';
+                echo '<td>' . $tel . '</td>';
+                echo '</tr>';
+            }
+        }
+        ?>
+    </tbody>
+</table>
+        
     
 
 
