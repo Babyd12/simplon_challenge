@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+*{
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+body{
+    /* background:no-repeat center/100% url("../images/hero-bg.jpg"); */
+    background-color: whitesmoke;
+}
+header{
+    width: 100%;
+    height: auto;
+    background-color: #4CAF50;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+header h1{
+    text-align: center;
+    color: white;
+    
+}
+
+/*For mergin HTML ONLY*/
+.container-father {
+    display: flex;
+    flex-wrap: nowrap; /* Empêche le saut à la ligne */
+}
+
+#container {
+    flex: 0 0 auto; /* Ne pas redimensionner */
+    width: 50%; /* Répartir l'espace en deux */
+    padding: 10px; /* Espace autour de chaque conteneur */
+    box-sizing: border-box; /* Inclut les marges et les rembourrages dans la largeur */
+    background-color: white;
+    position: relative;
+    top: 82px;
+    /* left: 0%; */
+}
+
+
+/*End Of For mergin HTML ONLY*/
+
+
+#container h2{
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 52px;
+  
+    
+}
+
+/* #container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    max-width: 420px;
+    position: relative;
+    top: 92px;
+    left: 0%;  
+    padding-right: -900px;
+   
+} */
+
+.row1 {
+    display: flex;
+    margin-bottom: 10px;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    margin-left: 54px;
+}
+.label{
+    position:relative;
+    right:110px;
+    font-weight: bolder;
+
+}
+
+input[type="text"], input[type="password"], input[type="email"]{
+    background-color: white;
+    width: 80%;
+    height: 40px;
+
+}
+input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hover{
+    background-color: #4CAF50;
+    font-weight: bold;
+    font-size: larger;
+}
+
+#togglePassword{
+    position: relative;
+    left: 150px;
+    top: 30px;
+    width: 25px;
+}
+#togglePassword1{
+    position: relative;
+    left: -29px;
+    width: 25px;
+}
+
+.row1{
+    display: block;
+    margin-bottom: 30px;
+    
+}
+.row1 .label {
+    margin-left: 109px;    
+}
+
+.row2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 85px;
+    
+}
+.row2 p a{
+    text-decoration: none;
+    color:black;
+    position: relative;
+    right:75px;
+}
+.row2 p a:hover{
+    text-decoration: none;
+    color:#4CAF50;
+}
+.row2 p:nth-child(2) {
+    color:red;
+    position: relative;
+    left: 93px;
+}
+.row2 p:nth-child(2) a{
+    color:red;
+    text-align: right;
+    position: relative;
+   
+}
+
+input[type="submit"]{
+    width: auto;
+    position: relative;
+    top: 22px;
+    background: #4CAF50;
+    margin-bottom: 30px;
+    margin-left: 40px; 
+    bottom:15px;
+    padding: 7px 5px;
+    border-radius: 2px;
+    color:white;
+
+}
+.middel-line{
+    border:2px solid #4CAF50;
+    height: 450px;
+    margin:82px 0px 15px 0px;
+   
+}
