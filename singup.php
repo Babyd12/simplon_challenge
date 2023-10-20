@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <h1>Connexion à MigiWara Task Manager</h1>
+        <h1>Inscription à MigiWara Task Manager</h1>
         <nav>
             
         </nav>
