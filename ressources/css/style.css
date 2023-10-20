@@ -107,8 +107,14 @@ input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hove
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-right: 45px;
+    margin-right: 25px;
     
+}
+.row2 p a{
+    text-decoration: none;
+    color:black;
+    position: relative;
+    right:95px;
 }
 .row2 p a:hover{
     text-decoration: none;
@@ -120,7 +126,7 @@ input[type="text"]:hover, input[type="password"]:hover, input[type="email"]:hove
     left: 93px;
 }
 .row2 p:nth-child(2) a{
-    color:red;
+    color:blue;
     text-align: right;
     position: relative;
    

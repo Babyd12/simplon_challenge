@@ -1,14 +1,20 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
     <title> Animated Image Gallery | CodingLab </title>
-    <link rel="stylesheet" href="ressources/css/tache.css">
+    <link rel="stylesheet" href="../ressources/css/tache.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
    </head>
-<body>
+<body style="">
+
+          <form action="../exe/exe_logout.php" method="get">
+          <input type="submit" value="Déconnexion" name="logoutMe" style="float:left; position:relative; margin-bottom:650px; left:289px;">
+        </form>
   <div class="container">
+
     <input type="radio" name="s" id="home" checked>
     <input type="radio" name="s" id="blog">
     <input type="radio" name="s" id="code">
@@ -16,11 +22,11 @@
     <input type="radio" name="s" id="about">
     <nav>
       <div class="slider"></div>
-      <label class="home" for="home">
-      <i class="fas fa-home"></i>Home
+      <label class="welcom" for="home">
+      <i class="fas fa-home"></i></i><a href="home.php">Home </a>
       </label>
       <label class="blog" for="blog">
-        <i class="fas fa-tasks"></i> Tâches
+        <i class="fas fa-tasks"></i> </i><a href="tache.php">Tâches </a>
       </label>
       <!-- <label class="code" for="code">
         <i class="fas fa-code"></i>Code
@@ -29,7 +35,7 @@
         <i class="fas fa-envelope"></i>Message
       </label>
       <label class="about" for="about">
-        <i class="fas fa-user"></i>About
+        <i class="fas fa-user"></i><a href="">About </a>
       </label>
     </nav>
 

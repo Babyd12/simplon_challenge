@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,43 +15,52 @@
             
         </nav>
     </header>
+    <form action="exe\exe_singup.php" method="get">
+        <div id="container" >
+            <?php 
+                if(!empty( $_SESSION['errorArray'])){
+                    foreach ( $_SESSION['errorArray'] as $erro_msg){
+                        echo "<p style='color:red'> $erro_msg</p>";
+                    }
+                }
+                unset($_SESSION['errorArray']);
+            ?>
+            <h2>Création de compte</h2>
 
-    <div id="container" >
-        <h2>Création de compte</h2>
+            
+            <div class="row1">
+                <label class="label">Nom Complet</label>
+                <input type="text" name="name" id="">
+            </div>
 
-        
-        <div class="row1">
-            <label class="label">Nom Complet</label>
-            <input type="text" name="name" id="">
+            <div class="row1">
+                <label class="label">Email :</label>
+
+                <input type="text" name="email" id="">
+            </div>
+            
+            <div class="row1">
+                <label class="label">Mot de passe :</label>
+                <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()">  </i>
+                <input type="password" name="password" id="passwordInput" />     
+            </div>
+            
+            <div class="row1">
+                <label class="label">Confirmation mot de passe</label>
+                <input type="text" name="passwordConfirmation" id="passwordInput1">
+                <i class="bi bi-eye-slash" id="togglePassword1" onclick="togglePasswordVisibility1()">  </i>
+
+            </div>
+
+            <div class="row2">
+                <P><a href="">Mot de passe oublié ?</a></P>
+                <P><a href="login.php">Se connecter</a></P>
+            </div>
+
+            <input type="submit" value="Créer un compte" name="send">
+            
         </div>
-
-        <div class="row1">
-            <label class="label">Email :</label>
-
-            <input type="email" name="email" id="">
-        </div>
-        
-        <div class="row1">
-            <label class="label">Mot de passe :</label>
-            <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()">  </i>
-            <input type="password" name="password" id="passwordInput" />     
-        </div>
-        
-        <div class="row1">
-            <label class="label">Confirmation mot de passe</label>
-            <input type="text" name="password1" id="passwordInput1">
-            <i class="bi bi-eye-slash" id="togglePassword1" onclick="togglePasswordVisibility1()">  </i>
-
-        </div>
-
-        <div class="row2">
-            <P><a href="">Mot de passe oublié ?</a></P>
-            <P><a href="">Se connecter</a></P>
-        </div>
-
-        <input type="submit" value="Créer un compte" name="send">
-        
-    </div>
+    </form>
 
     <script>
         function togglePasswordVisibility() {
