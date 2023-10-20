@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8">
     <title> Animated Image Gallery | CodingLab </title>
-    <link rel="stylesheet" href="temp.css">
+    <link rel="stylesheet" href="ressources/css/tache.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
    </head>
 <body>
