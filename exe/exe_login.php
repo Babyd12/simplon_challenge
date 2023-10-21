@@ -36,7 +36,7 @@
             $stmt ->bindParam(':userPassword',$password);
             $stmt ->execute();
             $row = $stmt->fetchAll();
-             //print_r($row);  die();
+            //  print_r($row[0]['userId']);  die();
             if(count($row) == 0){
 
                 $_SESSION['errorArray'][]= 'Email ou Mot de passe incorrect';
@@ -46,12 +46,13 @@
             }else{
                 //echo $row[0]['userNom']; die();
                 $_SESSION['userActif'] = $email;
+                 $_SESSION['userId'] = $row[0]['userId'];
                 $_SESSION['nomUserActif'] =$row[0]['userNom'];
                 $_SESSION['welcome'] = true;
 
                 //ne pas oublier de vider la session 
                 unset($_SESSION['email']);
-                header('location:../pages/welcom.php');
+                header('location:../pages/home.php');
                 die();
             }
 

@@ -141,13 +141,14 @@ input[type=radio]{
 }
 .task-content .middel-task-content, .end-task-content{
     display: flex;
-    flex-direction: row;
+    flex-direction: column; 
    
 }
 
 .task-content .end-task-content, .middel-task-content, .head-task-content,h2,  p{
     margin-left: 8px;
     margin-top:5px;
+    
 }
 
 
