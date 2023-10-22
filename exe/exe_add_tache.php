@@ -11,6 +11,8 @@
         $description = htmlspecialchars($_GET['description']);
         $deletable = 0;
         $error = false; 
+
+        echo $statu; echo '<br>'; echo $priorite;
         //user peut modifier la key statu dans js et me lenvoyer. donc try catch
         unset($_SESSION['errorArray']);
         

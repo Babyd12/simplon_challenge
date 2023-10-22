@@ -53,11 +53,22 @@ include '../config.php' ?>
         <h1>Gestion de mes tâches</h1>
         <?php echo '<p>' .(isset($_SESSION['userActif']) ? $_SESSION['nomUserActif'] : '') .'</p>';  ?>
       </section>
-      <button style="--clr:#39FF14; position:absolute; margin-left:100%; margin-bottom:40%; width:322px; " ><span><a href="#ajoutTache" style="text-decoration:none; color:#fff;">Ajouter une tâche</a></span><i></i></button>
+   
     </div>
 
+    <!--Afficha du message derreur ou de succes -->
+    <?php echo '<p>' .(isset($_SESSION['successMsg']) ? $_SESSION['successMsg'] : '') .'</p>';  
+            unset($_SESSION['successMsg']);
+
+            if(isset($_SESSION['errorArray'])) {
+                foreach($_SESSION['errorArray'] as $error_msg){
+                    echo "<p style='position:relative;left:45%; margin-top:6px;' >$error_msg</p>";
+                }
+                unset($_SESSION['errorArray']);
+            }
+    ?>
+    
 <?php
-    include'../config.php';
     if(isset($_GET['sendVoirPlus'])){
         $key = $_GET['idTache'] ;
 
@@ -74,7 +85,7 @@ include '../config.php' ?>
         if(count($rows) !=0){
             foreach ($rows as $row){
                 echo '
-                      <form method="get" action="voir_plus.php" >
+                      <form method="get" action="../exe/exe_edite_tache.php" >
                         <div class="task-content">
                           <div class="head-task-content">
                             <h2>Titre de la tache: '.$row['nomTache'].' </h2>
@@ -86,7 +97,11 @@ include '../config.php' ?>
                           <div class="end-task-content">
                             <p>priorité : '.$row['prioriteType'].'</p> <p>Statut : '.$row['statuType'].'</p>
                             <input type="hidden" name="voirPlus" value="'.$row['idTache'].'">
-                            <input type="submit" value="Voir les détails" name="sendVoirPlus">
+                            <input type="hidden" name="statuType" value="'.$row['statuType'].'">
+                            <div class="input-delete-task" style="display:flex; flex-firectione:row; margin-right:99%;">
+                                <input type="submit" value="Marquer comme terminée" name="terminé" style="display:flex; border-radius: 6px 6px; color:white; padding:6px 6px; ">
+                                <input type="submit" value="Supprimer la tâche" name="supprimer" style="display:flex; background-color:red; border-radius: 6px 6px; color:white; padding:6px 6px;">
+                            </div>
                           </div>
                         </div>
                       </form>
@@ -113,34 +128,8 @@ include '../config.php' ?>
     
     <form action="../exe/exe_add_tache.php" method="get">
       <div class="add-task">
-        <h2 > <a id="ajoutTache">Ajouter une nouvelle tâche</a></h2>
-          <div class="row1">
-            <label class="label">Titre</label>
-            <input type="text" name="titre" id="">
-          </div>
-
-        
+        <h2 > <a id="ajoutTache">Modifier le statu de la tâche</a></h2>
           <?php 
-            $stmt = $bdd->prepare("SELECT * FROM priorite") ;
-            $stmt->execute();
-            $arrays = $stmt->fetchAll(PDO::FETCH_ASSOC);
-             
-            // print_r($lines);
-            // print_r($lines[0]['prioriteType']);
-            // // die();
-            echo '  <p >Priotrité de la tâche</p>';
-            echo '<select name="priorite">';
-           
-            foreach($arrays as $key => $array){    
-              // foreach($value as $key2 => $line){
-                  echo '           
-                    <option selected value="'.$key.'">'.$array['prioriteType'].'</option>       
-                  ';
-              // }
-            }
-            echo '</select>';
-
-
             echo '<p>Statu de la tâche</p>';
             $stmt2 = $bdd->prepare("SELECT * FROM statu");
             $stmt2 ->execute();
@@ -150,27 +139,13 @@ include '../config.php' ?>
           
             foreach ($arrays2 as $key2 => $array2) {
                 echo '           
+            
                 <option selected value="'.$key2.'">'.$array2['statuType'].'</option>       
               ';
             }
             echo '</select>';
           ?>
-
-          <div class="row1">
-            <label class="label">Date début de la tâche</label>
-            <input type="date" name="date_debut" id="">
-          </div>
-          <div class="row1">
-            <label class="label">Date Fin de la tâche</label>
-            <input type="date" name="date_fin" id="">
-          </div>
-
-          <div class="row1">
-            <label class="label">Description</label>
-            <textarea name="description" id="" class="textarea"></textarea>
-          </div>
-
-          <input type="submit" value="Enregistrer" name="send_task">
+          <input type="submit" value="Enregistrer" name="send_change_statu">
       </div>
     </form>
 
@@ -180,4 +155,4 @@ include '../config.php' ?>
   
   
 </body>
-</html>
+</html> 
