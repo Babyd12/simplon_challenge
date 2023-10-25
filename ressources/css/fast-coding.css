@@ -7,7 +7,9 @@
   font-family: "Poppins", sans-serif;
 }
 main {
-  background: #6610f2;
+  /* background: #6610f2; */
+  background-color: #4CAF50;
+  
 }
 .container {
   max-width: 1300px;

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!-- Coding by CodingNepal || www.codingnepalweb.com -->
 <html lang="en">
@@ -9,6 +10,8 @@
   </head>
   <body>
     <main>
+
+
       <!-- Header Start -->
       <header>
         <nav class="nav container">

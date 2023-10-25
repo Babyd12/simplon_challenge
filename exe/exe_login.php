@@ -2,6 +2,10 @@
     session_start();
     include '../config.php';
     //include 'exe_singup.php';
+    if(isset($_SESSION['userActif'])){
+        header('location:../pages/home.php');
+        die();
+    }
 
     if(isset($_GET['send_login'])){
        
@@ -46,7 +50,7 @@
             }else{
                 //echo $row[0]['userNom']; die();
                 $_SESSION['userActif'] = $email;
-                 $_SESSION['userId'] = $row[0]['userId'];
+                $_SESSION['userId'] = $row[0]['userId'];
                 $_SESSION['nomUserActif'] =$row[0]['userNom'];
                 $_SESSION['welcome'] = true;
 

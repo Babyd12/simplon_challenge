@@ -18,6 +18,11 @@
     <form action="exe/exe_login.php" method="get">
         <div id="container" >
         <?php 
+                if(isset($_SESSION['userActif'])){
+                    header('location: pages/home.php');
+                    die();
+                }
+
                 if(!empty( $_SESSION['errorArray'])){
                     foreach ( $_SESSION['errorArray'] as $erro_msg){
                         echo "<p style='color:red'> $erro_msg</p>";

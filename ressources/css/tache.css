@@ -93,16 +93,16 @@ nav .slider{
   color: #fff;
 }
 #blog:checked ~ nav .slider{
-left: 29%;
+left: 25%;
 }
 /* #code:checked ~ nav .slider{
 left: 50%;
 } */
 #help:checked ~ nav .slider{
-left: 52%;
+left: 50%;
 }
 #about:checked ~ nav .slider{
-left: 80%;
+left: 75%;
 }
 input[type=radio]{
   display: none;
@@ -130,6 +130,29 @@ input[type=radio]{
 .task-header p,h1{
   text-align: center;
   color: white;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+  width: 50%;
+  margin:0 auto;  
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
 }
 
 .task-content{
@@ -196,12 +219,19 @@ input[type="text"], .textarea{
     width: 20rem;
     padding: 1rem 4rem 1rem 1rem;
     margin: 2rem 0rem 0rem 0rem;
+      /*Pour les navigateurs qui supporte pas le SCSS*/
+      background-color: rgba(76, 175, 80, 0.5);
+
     background: var(--arrow-icon) no-repeat right 0.8em center / 1.4em,
       linear-gradient(to left, var(--arrow-bg) 3em, var(--select-bg) 3em);
     color: white;
     border-radius: 0.25em;
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
     cursor: pointer;
+
+
+
+
     /* Remove IE arrow */
     &::-ms-expand {
       display: none;
@@ -214,6 +244,7 @@ input[type="text"], .textarea{
     option {
       color: inherit;
       background-color: var(--option-bg);
+      background-color: grey;
     }
   }
   
@@ -337,7 +368,7 @@ button:hover i::after {
   }
 }
 
-input[type="date"] {
+input[type="datetime-local"] {
     display:block;
     position:relative;
     padding:1rem 3.5rem 1rem 0.75rem;
@@ -347,8 +378,7 @@ input[type="date"] {
     
     border:1px solid #8292a2;
     border-radius:0.25rem;
-    background:
-      white
+    background:white
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='22' viewBox='0 0 20 22'%3E%3Cg fill='none' fill-rule='evenodd' stroke='%23688EBB' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' transform='translate(1 1)'%3E%3Crect width='18' height='18' y='2' rx='2'/%3E%3Cpath d='M13 0L13 4M5 0L5 4M0 8L18 8'/%3E%3C/g%3E%3C/svg%3E")
       right 1rem
       center
@@ -356,12 +386,14 @@ input[type="date"] {
     
     cursor:pointer;
   }
-  input[type="date"]:focus {
+
+  
+  input[type="datetime-local"]:focus {
     outline:none;
     border-color:#3acfff;
     box-shadow:0 0 0 0.25rem rgba(0, 120, 250, 0.1);
   }
-
+/*
   ::-webkit-datetime-edit,
   ::-webkit-datetime-edit-fields-wrapper,
   ::-webkit-datetime-edit-month-field:hover,
@@ -391,7 +423,7 @@ input[type="date"] {
     background:rgba(0, 120, 250, 1);
    
   }
-  
-  input[type="date"]:hover::-webkit-calendar-picker-indicator { opacity:0.05; }
-  input[type="date"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15; }
+  */
+  input[type="datetime-local"]:hover::--select-bg:hover  { opacity:0.05; }
+  input[type="datetime-local"]:hover::-webkit-calendar-picker-indicator:hover { opacity:0.15; }
   

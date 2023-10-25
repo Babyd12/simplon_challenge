@@ -1,5 +1,7 @@
 <?php session_start();
-include '../config.php' ?>
+include '../config.php';
+include '../session_controler.php'; 
+?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -19,7 +21,7 @@ include '../config.php' ?>
 
     <input type="radio" name="s" id="home" >
     <input type="radio" name="s" id="blog" checked>
-    <input type="radio" name="s" id="code">
+    <!-- <input type="radio" name="s" id="code"> -->
     <input type="radio" name="s" id="help">
     <input type="radio" name="s" id="about">
 
@@ -60,21 +62,34 @@ include '../config.php' ?>
     <?php 
           if(isset($_SESSION['errorArray'])) {
             foreach($_SESSION['errorArray'] as $error_msg){
-              echo "<p style='position:absolute; left:45%; margin-top:6px;' >$error_msg</p>";
+              echo '
+              <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> 
+                <strong> '.$error_msg.'</strong>
+              </div>
+            ';
             }
+            unset($_SESSION['errorArray']);
           }
           else if(!empty($_SESSION['succesMsg'])){
-            echo "<p style='position:absolute; left:45%; margin-top:6px;' >".$_SESSION['succesMsg']."</p>";
-            // unset($_SESSION['succesMsg']);
+            echo '
+              <div class="alert" style="background-color:green;">
+                <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> 
+                <strong> '.$_SESSION['succesMsg'].'</strong>
+              </div>
+            ';
+             unset($_SESSION['succesMsg']);
           }
 
     ?>
 
   <?php 
+          $userId = $_SESSION["userId"];
           $stmt = $bdd ->prepare("SELECT t.idTache, t.nomTache, t.descriptionTache, t.dateDebut, t.dateFin, p.prioriteType, s.statuType
             FROM tache as t
             INNER JOIN priorite as p ON t.fkPrioriteId = p.PrioriteId
             LEFT JOIN statu as s ON t.fkStatuId = s.StatuId
+            WHERE t.fkUserId =  $userId
             GROUP BY t.idTache, t.nomTache, t.descriptionTache, t.dateDebut, t.dateFin, p.prioriteType, s.statuType
             ");
           $stmt -> execute();
@@ -85,11 +100,11 @@ include '../config.php' ?>
                   <form method="get" action="voir_plus.php" >
                     <div class="task-content">
                       <div class="head-task-content">
-                        <h2>Titre de la tache: '.$row['nomTache'].' </h2>
-                        <p>Description de la tache: '.$row['descriptionTache'].'</p>
+                        <h2> '.$row['nomTache'].' </h2>
+                        <p>Description : '.$row['descriptionTache'].'</p>
                       </div>
                       <div class="middel-task-content">
-                        <p>Durée début: '.$row['dateDebut'].'</p> <p>Dadte fin : '.$row['dateFin'].'</p>
+                        <p>Date début: '.$row['dateDebut'].'</p> <p>Dadte fin : '.$row['dateFin'].'</p>
                       </div>
                       <div class="end-task-content">
                         <p>priorité : '.$row['prioriteType'].'</p> <p>Statut : '.$row['statuType'].'</p>
@@ -133,7 +148,7 @@ include '../config.php' ?>
             }
             echo '</select>';
 
-
+        
             echo '<p>Statu de la tâche</p>';
             $stmt2 = $bdd->prepare("SELECT * FROM statu");
             $stmt2 ->execute();
@@ -148,14 +163,14 @@ include '../config.php' ?>
             }
             echo '</select>';
           ?>
-
+  
           <div class="row1">
             <label class="label">Date début de la tâche</label>
-            <input type="date" name="date_debut" id="">
+            <input type="datetime-local" name="date_debut" id="">
           </div>
           <div class="row1">
             <label class="label">Date Fin de la tâche</label>
-            <input type="date" name="date_fin" id="">
+            <input type="datetime-local" name="date_fin" id="">
           </div>
 
           <div class="row1">

@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+
+ ?>
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -27,9 +29,10 @@
           }
   ?>
 
-<form action="../exe/exe_logout.php" method="get">
-          <input type="submit" value="Déconnexion" name="logoutMe" style="float:left; position:relative; margin-bottom:650px; left:289px;">
-        </form>
+  <form action="../exe/exe_logout.php" method="get">
+    <!-- <input type="submit" value="Déconnexion" name="logoutMe" style="float:left; position:relative; margin-bottom:650px; left:289px;"> -->
+    <button type="submit" class="button" name="logoutMe" style="--clr:#39FF14;  position:absolute; top: 6%; left:10%;"><span>Deconexion</span><i></i></button>
+  </form>
   <div class="container">
 
     <input type="radio" name="s" id="home" checked>

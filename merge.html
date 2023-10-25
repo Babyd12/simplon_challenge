@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,72 +16,74 @@
     </header>
 <div class="container-father">
 
-<form action="exe/exe_singup.php" method="get">
-    <div id="container" >
-        <h2>Création de compte</h2>
+    <form action="exe\exe_singup.php" method="get">
+        <div id="container" >
+            <h2>Création de compte</h2>
 
-        
-        <div class="row1">
-            <label class="label">Nom Complet</label>
-            <input type="text" name="name" id="">
+            
+            <div class="row1">
+                <label class="label">Nom Complet</label>
+                <input type="text" name="name" id="">
+            </div>
+
+            <div class="row1">
+                <label class="label">Email :</label>
+
+                <input type="text" name="email" id="">
+            </div>
+            
+            <div class="row1">
+                <label class="label">Mot de passe :</label>
+                <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()">  </i>
+                <input type="password" name="password" id="passwordInput" />     
+            </div>
+            
+            <div class="row1">
+                <label class="label">Confirmation mot de passe</label>
+                <input type="text" name="passwordConfirmation" id="passwordInput1">
+                <i class="bi bi-eye-slash" id="togglePassword1" onclick="togglePasswordVisibility1()">  </i>
+
+            </div>
+
+            <div class="row2">
+                <P><a href="">Mot de passe oublié ?</a></P>
+                <P><a href="login.php">Se connecter</a></P>
+            </div>
+
+            <input type="submit" value="Créer un compte" name="send">
+            
         </div>
+    </form>
 
-        <div class="row1">
-            <label class="label">Email :</label>
+        <div class="middel-line"></div>
 
-            <input type="email" name="email" id="">
+    <form action="exe/exe_login.php" method="get">
+        <div id="container" >
+
+            <h2>Connexion</h2>
+            <div class="row1">
+                <label class="label">Email :</label>
+
+                <input type="email" name="email" id="">
+            </div>
+            
+            <div class="row1">
+                <label class="label">Mot de passe :</label>
+                <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()">  </i>
+                <input type="password" name="password" id="passwordInput" />     
+            </div>
+            
+
+            <div class="row2">
+                <P><a href="">Mot de passe oublié ?</a></P>
+                <P><a href="singup.php">S'inscrire</a></P>
+            </div>
+
+            <input type="submit" value="Créer un compte" name="send_login">
+            
         </div>
-        
-        <div class="row1">
-            <label class="label">Mot de passe :</label>
-            <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()">  </i>
-            <input type="password" name="password" id="passwordInput" />     
-        </div>
-        
-        <div class="row1">
-            <label class="label">Confirmation mot de passe</label>
-            <input type="text" name="password1" id="passwordInput1">
-            <i class="bi bi-eye-slash" id="togglePassword1" onclick="togglePasswordVisibility1()">  </i>
+    </form>
 
-        </div>
-
-        <div class="row2">
-            <P><a href="">Mot de passe oublié ?</a></P>
-            <P><a href="">Se connecter</a></P>
-        </div>
-
-        <input type="submit" value="Créer un compte" name="send">
-        
-    </div>
-</form>
-
-    <div class="middel-line"></div>
-
-    <div id="container" >
-        <h2>Connexion</h2>      
-
-
-        <div class="row1">
-            <label class="label">Email :</label>
-
-            <input type="email" name="email" id="">
-        </div>
-        
-        <div class="row1">
-            <label class="label">Mot de passe :</label>
-            <i class="bi bi-eye-slash" id="togglePassword" onclick="togglePasswordVisibility()">  </i>
-            <input type="password" name="password" id="passwordInput" />     
-        </div>
-        
-
-        <div class="row2">
-            <P><a href="">Mot de passe oublié ?</a></P>
-            <P><a href="">Se connecter</a></P>
-        </div>
-
-        <input type="submit" value="Créer un compte" name="send">
-        
-    </div>
 </div>
     <script>
         function togglePasswordVisibility() {
@@ -112,4 +114,4 @@
     </script>
 
 </body>
-</html>
+</html> -->

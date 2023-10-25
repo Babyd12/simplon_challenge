@@ -1,5 +1,8 @@
 <?php session_start();
-include '../config.php' ?>
+include '../config.php';
+include '../session_controler.php';
+?>
+
 <!DOCTYPE html>
 <!-- Created By CodingLab - www.codinglabweb.com -->
 <html lang="en" dir="ltr">
@@ -57,12 +60,25 @@ include '../config.php' ?>
     </div>
 
     <!--Afficha du message derreur ou de succes -->
-    <?php echo '<p>' .(isset($_SESSION['successMsg']) ? $_SESSION['successMsg'] : '') .'</p>';  
-            unset($_SESSION['successMsg']);
+    <?php if(!empty($_SESSION['succesMsg'])){
+            echo '
+              <div class="alert" style="background-color:green;">
+                <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> 
+                <strong> '.$_SESSION['succesMsg'].'</strong>
+              </div>
+            ';
+             unset($_SESSION['succesMsg']);
+          }
 
             if(isset($_SESSION['errorArray'])) {
                 foreach($_SESSION['errorArray'] as $error_msg){
-                    echo "<p style='position:relative;left:45%; margin-top:6px;' >$error_msg</p>";
+                  echo '
+                  <div class="alert">
+                    <span class="closebtn" onclick="this.parentElement.style.display=\'none\';">&times;</span> 
+                    <strong> '.$error_msg.'</strong>
+                  </div>
+                ';
+                
                 }
                 unset($_SESSION['errorArray']);
             }

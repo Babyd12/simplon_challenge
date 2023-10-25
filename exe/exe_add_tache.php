@@ -11,6 +11,7 @@
         $description = htmlspecialchars($_GET['description']);
         $deletable = 0;
         $error = false; 
+        // echo $date_debut; die();
 
         echo $statu; echo '<br>'; echo $priorite;
         //user peut modifier la key statu dans js et me lenvoyer. donc try catch
@@ -27,6 +28,11 @@
         else if(!isValidIntervalDate($date_debut,$date_fin)){
             $error = true;
             $_SESSION['errorArray'][] = 'Brother l\'tervalle de date n\'est pas bonne';
+        }
+        else if($statu == 'Terminé'){
+            $error = true;
+            $_SESSION['errorArray'][] = 'Impossible d\'ajouter une taché terminé';
+
         }
 
         if($error){
