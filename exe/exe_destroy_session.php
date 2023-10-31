@@ -1,10 +1,20 @@
 <?php 
 
-    if(isset($_GET['sess'])){
+class DestroySession{
+
+
+    
+    public static function Destroyer(){
         
-        $_SESSION = array();
-        session_destroy();
-        header('location: ../index.php');
+        if(isset($_GET['sess'])){
+           
+            $_SESSION = array();
+            session_destroy();
+            header('location: ../../index.php');
+        }else{
+            echo "UNKNOWN FORM";
+        }
     }
+}
 
 ?>

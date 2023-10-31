@@ -1,0 +1,19 @@
+Il s'agit de la version POO de l'application suivant le parter singleton et MVC
+
+Dans la core il y'a les class générique que  je pourais utiliser de dossier  à dossier
+dans de dossier App j'ai les class spécifique à mon appliclationd
+
+
+La class App est comme le core de mon application c'est elle qui charge mon autoloader
+et instancie la connexion à la base de données 
+du coup presque toutes les classes on besoin delle 
+
+
+// Exemple 1 : Sélection de toutes les lignes d'une table
+$query = "SELECT * FROM utilisateurs";
+$allUsers = $app->executeQuery($query, [], 'Utilisateur', false);
+
+// Exemple 2 : Sélection d'un utilisateur par son ID
+$query = "SELECT * FROM utilisateurs WHERE id = :id";
+$attributes = ['id' => 42];
+$user = $app->executeQuery($query, $attributes, 'Utilisateur', true);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="public/css/style.css">
     <title>Document</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
         </div>
 
 
-        <form action="exe/exe_singup.php" method="get" class="info_form">
+        <form action="exe/controller/singupController.php" method="get" class="info_form">
             
             <div class="filling_form">
                 <div class="form">

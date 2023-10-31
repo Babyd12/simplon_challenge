@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 try{
     $bdd=new PDO('mysql:host=localhost;dbname=ibokotaxi;charset=utf8','root','');
@@ -6,5 +6,4 @@ try{
     }catch (Exception $e){
         die('erreur:' .$e-> getMessage());
     }
-
-?>
+    
