@@ -27,7 +27,7 @@
             @endphp
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" href="/" @class(['nav-link', 'active' => str_contains($route, 'property.')])>Bien</a>
+                    <a class="nav-link" href=" {{ route('property.index') }} " @class(['nav-link', 'active' => str_contains($route, 'property.')])>Les Biens</a>
                     {{-- <a class="nav-link" href="/" @class(['nav-link', 'active' => str_contains($route, 'option.')]) ></a> --}}
 
                 </div>
